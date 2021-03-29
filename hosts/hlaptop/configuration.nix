@@ -136,17 +136,17 @@
     #emacs
     #cmake #sys
     #social
-    #discord
-    #weechat	 #irc
+    discord
+    weechat	 #irc
     #notsorted
     #ipfs	 #ipfs daemon
     #ipget	 #ipfs cli
-    #pavucontrol
+    pavucontrol
     #jetbrains.idea-ultimate
     #jdk
     # vscode
     # pgadmin
-    #atom
+    atom
     postgresql
     # dbeaver
      #pgmanage
