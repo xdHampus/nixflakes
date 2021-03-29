@@ -1,0 +1,14 @@
+xkb_keymap {
+ xkb_keycodes {
+  include "evdev+aliases(qwerty)"
+  <ESC> = 49;
+  <BKSP> = 51;
+  <LCTL> = 37;
+  <TLDE> = 9;
+  <BKSL> = 22;
+ };
+ xkb_types { include "complete"};
+ xkb_compatibility { include "complete"};
+ xkb_symbols { include "pc+us(dvorak)+us(dvorak):2+inet(evdev)+altwin(swap_alt_win)+ctrl(nocaps)" };
+ xkb_geometry { include "pc(pc104)"};
+};
