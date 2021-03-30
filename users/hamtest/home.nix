@@ -25,17 +25,10 @@ in
   programs.home-manager.enable = true;
 
   imports = [
-    #./../../programs/firefox/default.nix
-    #./../../programs/xmonad/default.nix
-    #./../../programs/alacritty/default.nix
-    #./../../programs/git/default.nix
-
-    ./programs/firefox/default.nix
-    ./programs/xmonad/default.nix
-    ./programs/alacritty/default.nix
-    ./programs/git/default.nix
-
-
+    ./../../programs/firefox/default.nix
+    ./../../programs/xmonad/default.nix
+    ./../../programs/alacritty/default.nix
+    ./../../programs/git/default.nix
   ];
 
   xdg.enable = true;
