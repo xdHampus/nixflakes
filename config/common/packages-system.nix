@@ -20,7 +20,6 @@
     ntfs3g
     acpilight
     xterm
-    firefox
     rofi
     pcmanfm
     xmobar

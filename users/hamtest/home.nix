@@ -29,6 +29,8 @@ in
     ./../../programs/xmonad/default.nix
     ./../../programs/alacritty/default.nix
     ./../../programs/git/default.nix
+    ./../../programs/vscode/default.nix
+    ./../../programs/xscreensaver/default.nix
   ];
 
   xdg.enable = true;
