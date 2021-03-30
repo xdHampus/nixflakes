@@ -57,7 +57,7 @@
             home-manager.useUserPackages = true;
             home-manager.users.hamtest = { ... }: {
               imports = [
-                ./hosts/hlaptop/users/hamtest/home.nix
+                ./users/hamtest/home.nix
               ];
             };
           })
