@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  programs.xscreensaver = {
+  services.xscreensaver = {
     enable = true;
   };
 }

@@ -30,7 +30,7 @@ in
     ./../../programs/alacritty/default.nix
     ./../../programs/git/default.nix
     ./../../programs/vscode/default.nix
-    ./../../programs/xscreensaver/default.nix
+    ./../../config/services/xscreensaver.nix
   ];
 
   xdg.enable = true;
