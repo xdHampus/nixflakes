@@ -31,6 +31,7 @@ in
     ./../../programs/git/default.nix
     ./../../programs/vscode/default.nix
     ./../../config/services/xscreensaver.nix
+    
   ];
 
   xdg.enable = true;

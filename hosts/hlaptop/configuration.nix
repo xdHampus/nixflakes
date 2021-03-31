@@ -64,12 +64,12 @@
     isNormalUser = true;
     home = "/home/hamtest";
     description = "Hamtest";
-    extraGroups = [ "audio" "wheel" "networkmanager" "docker"];
+    extraGroups = [ "users" "audio" "wheel" "networkmanager" "docker"];
   };
 
   # Nix config
-  nix.allowedUsers = [ "hamtest" "@wheel" ];
-  nix.trustedUsers = [ "root" "hamtest" "@wheel"  ];
+  nix.allowedUsers = [ "@wheel" ];
+  nix.trustedUsers = [ "root" "@wheel"  ];
 
 
 
@@ -89,7 +89,7 @@
     #ipget	 #ipfs cli
     pavucontrol
     #jetbrains.idea-ultimate
-    #jdk
+    jdk
     # vscode
     # pgadmin
     atom

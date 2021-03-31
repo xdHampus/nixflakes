@@ -1,30 +1,44 @@
-{ targets, ... }:
+{ users, pkgs, ... }:
+
+with pkgs.lib;
 
 let
+   
 
-    userHome = x: "./../users/${x}/home.nix";
+    forEach = pkgs.lib.lists.forEach;
+    mergeAttrs = pkgs.lib.trivial.mergeAttrs;	
 
-    lib = import <nixpkgs/lib>;
-    forEach = lib.lists.forEach;
-    zipAttrs = lib.attrsets.zipAttrs;    
+   toPath = s: ./. + s;
 
-    
-    userList = forEach targets (x:
+   userHome = x: toPath ("/../users/${x}/home.nix");	
+   
+   userAttrs =  (forEach users (x:
         let
         in
-        {
-            importedUsers.${x} = { ... }: {
-              imports = [
-                userHome x
+        {   
+            ${x} = { ... }: {
+	              imports = [
+                   (userHome x)
               ];
             };
         }
-    );
+    ));
     
-    users = zipAttrs (zipAttrs (userList)).importedUsers;
+   
+
+recursiveMerge = attrList:
+  let f = attrPath:
+    zipAttrsWith (n: values:
+      if tail values == []
+        then head values
+      else if all isList values
+        then unique (concatLists values)
+      else if all isAttrs values
+        then f (attrPath ++ [n]) values
+      else last values
+    );
+  in f [] attrList;
 
 
 in
-users
-
-
+recursiveMerge userAttrs

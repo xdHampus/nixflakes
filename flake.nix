@@ -50,8 +50,9 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users = import ./nix/user-import.nix { 
-              targets = [ "guest" "hamtest" ];
-            };
+              users = [ "hamtest" ];
+              pkgs = nixpkgs;
+	    };
             #home-manager.users.hamtest = { ... }: {
             #  imports = [
             #    ./users/hamtest/home.nix
