@@ -17,9 +17,9 @@ let
         in
         {   
             ${x} = { ... }: {
-	              imports = [
+	            imports = [
                    (userHome x)
-              ];
+                ];
             };
         }
     ));

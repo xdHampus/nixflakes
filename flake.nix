@@ -52,12 +52,7 @@
             home-manager.users = import ./nix/user-import.nix { 
               users = [ "hamtest" ];
               pkgs = nixpkgs;
-	    };
-            #home-manager.users.hamtest = { ... }: {
-            #  imports = [
-            #    ./users/hamtest/home.nix
-            #  ];
-            #};
+	          };
           })
       ];
     };
