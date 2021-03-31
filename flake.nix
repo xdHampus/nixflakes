@@ -33,12 +33,6 @@
 
       #nixpkgs-unstable.url = "github:NixOS/nixpkgs/master";    # for packages on the edge
 
-
-      #home-manager.url = "github:rycee/home-manager/master";
-      #home-manager.inputs.nixpkgs.follows = "nixpkgs";
-      # Extras
-      #nixpkgs.url = "github:NixOS/nixpkgs/nixos-20.03";
-
   };
 
 
@@ -55,11 +49,14 @@
           home-manager.nixosModules.home-manager ({
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.hamtest = { ... }: {
-              imports = [
-                ./users/hamtest/home.nix
-              ];
+            home-manager.users = import ./nix/user-import.nix { 
+              targets = [ "guest" "hamtest" ];
             };
+            #home-manager.users.hamtest = { ... }: {
+            #  imports = [
+            #    ./users/hamtest/home.nix
+            #  ];
+            #};
           })
       ];
     };
