@@ -1,6 +1,6 @@
 # Main NixOS Configuration file
 
-{ config, pkgs, ... }:
+{ config, pkgs, unstable, ... }:
 
 {
   imports =
@@ -87,7 +87,7 @@
     atom
     postgresql
     # MAINTAINED NIXPKGS
-    nixpkgs-unstable.quich
+    unstable.quich
 
  ];
 

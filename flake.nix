@@ -6,8 +6,6 @@
   inputs = {
       # Core dependencies.
       nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-      nixpkgs-unstable.url = "github:NixOS/nixpkgs/master";
-
 
       home-manager = {
         url = "github:rycee/home-manager/master";
@@ -16,15 +14,22 @@
         };
       };
 
+      # Extra
+      nixpkgs-unstable.url = "github:NixOS/nixpkgs/master";
+      nixpkgs-dev.url = "github:xdHampus/nixpkgs/master";
 
 
   };
 
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager }: {
+  outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-dev, home-manager }: {
 
 
-    nixosConfigurations.hlaptop = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.hlaptop = 
+      let
+        unstable = nixpkgs-unstable;
+      in
+    nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
           #Host config
