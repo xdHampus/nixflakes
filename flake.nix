@@ -26,7 +26,7 @@
 
 
     nixosConfigurations.hlaptop = nixpkgs.lib.nixosSystem 
-    ({ pkgs, ... }:
+    { pkgs, ... }:
       let
         unstable = nixpkgs-unstable;
       in
@@ -46,7 +46,7 @@
 	          };
           })
       ];
-    });
+    };
 
     #Test headless server
     nixosConfigurations.container = nixpkgs.lib.nixosSystem {
