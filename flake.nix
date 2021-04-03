@@ -17,22 +17,50 @@
       # Extra
       nixpkgs-unstable.url = "github:NixOS/nixpkgs/master";
       nixpkgs-dev.url = "github:xdHampus/nixpkgs/master";
-
-
   };
 
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-dev, home-manager }: {
+  outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-dev, home-manager }:
+  let
+    inherit (nixpkgs) lib;
+    inherit (lib) removeSuffix;
+
+    pkgs = (import nixpkgs) {
+        system = "x86_64-linux";
+        config = {
+          allowUnfree = true;
+        };
+        overlays = attrValues self.overlays;
+      };
+
+  in {
+
+    overlays = {
+      unstable = final: prev: {
+        unstable = import inputs.nixpkgs-unstable {
+          system = final.system;
+          config = {
+            allowUnfree = true;
+          };
+        };
+      };
+      dev = final: prev: {
+        dev = import inputs.nixpkgs-dev {
+          system = final.system;
+          config = {
+            allowUnfree = true;
+          };
+        };
+      };
+    };
+
 
 
     nixosConfigurations.hlaptop = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-          #Host config
-          ({... }:
-          let unstable = nixpkgs-unstable;
-          in ./hosts/hlaptop/configuration.nix
-          )
+            
+          ./hosts/hlaptop/configuration.nix
 
           #Home manager
           home-manager.nixosModules.home-manager ({
@@ -44,6 +72,7 @@
 	          };
           })
       ];
+      inherit pkgs;
     };
 
     #Test headless server

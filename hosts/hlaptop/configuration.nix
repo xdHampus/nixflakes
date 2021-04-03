@@ -1,6 +1,6 @@
 # Main NixOS Configuration file
 
-{ config, pkgs, unstable, ... }:
+{ config, pkgs, ... }:
 
 {
   imports =
