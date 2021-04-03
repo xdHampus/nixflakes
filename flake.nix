@@ -20,7 +20,7 @@
   };
 
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-dev, home-manager }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, nixpkgs-dev, home-manager }:
   let
 
     inherit (builtins) listToAttrs attrValues attrNames readDir;
