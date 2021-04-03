@@ -25,16 +25,14 @@
   outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-dev, home-manager }: {
 
 
-    nixosConfigurations.hlaptop = nixpkgs.lib.nixosSystem 
-    { pkgs, ... }:
-      let
-        unstable = nixpkgs-unstable;
-      in
-    {
+    nixosConfigurations.hlaptop = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
           #Host config
-          ./hosts/hlaptop/configuration.nix
+          ({... }:
+          let unstable = nixpkgs-unstable;
+          in ./hosts/hlaptop/configuration.nix
+          )
 
           #Home manager
           home-manager.nixosModules.home-manager ({
