@@ -2,25 +2,11 @@
 
   description = "NixOS configuration for all machines";
 
-  #Testing
-
-  #Launch
-  #
-  #Create test container
-  #nixos-container start flake-test --flake /home/hampus/documents/repo/nixflakes#container
-  #Test container
-  #nixos-container start flake-test
-  #See response
-  #curl http://flake-test/
-  #
-  #Build
-  #nix build /path/to/my-flake#nixosConfigurations.container.config.system.build.toplevel
-
-
   # Inputs control all dependencies that will be used by the flake in the outputs
   inputs = {
       # Core dependencies.
-      nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";     # primary nixpkgs
+      nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+      nixpkgs-unstable.url = "github:NixOS/nixpkgs/master";
 
 
       home-manager = {
@@ -31,12 +17,11 @@
       };
 
 
-      #nixpkgs-unstable.url = "github:NixOS/nixpkgs/master";    # for packages on the edge
 
   };
 
 
-  outputs = { self, nixpkgs, home-manager }: {
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager }: {
 
 
     nixosConfigurations.hlaptop = nixpkgs.lib.nixosSystem {

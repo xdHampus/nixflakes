@@ -75,28 +75,19 @@
 
   # Basic packages
   environment.systemPackages = with pkgs; [
-
-
-    #dev
-    #kdevelop	 #c++
-    #emacs
-    #cmake #sys
-    #social
+    
+    # SOCIAL
     discord
-    weechat	 #irc
-    #notsorted
-    #ipfs	 #ipfs daemon
-    #ipget	 #ipfs cli
+    weechat
+    # UTILITY
     pavucontrol
-    #jetbrains.idea-ultimate
+    # DEV
     jdk
-    # vscode
-    # pgadmin
+    #jetbrains.idea-ultimate
     atom
     postgresql
-    # dbeaver
-     #pgmanage
-     #pgadmin
+    # MAINTAINED NIXPKGS
+    nixpkgs-unstable.quich
 
  ];
 
