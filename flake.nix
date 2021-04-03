@@ -25,11 +25,12 @@
   outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-dev, home-manager }: {
 
 
-    nixosConfigurations.hlaptop = 
+    nixosConfigurations.hlaptop = nixpkgs.lib.nixosSystem 
+    ({ pkgs, ... }:
       let
         unstable = nixpkgs-unstable;
       in
-    nixpkgs.lib.nixosSystem {
+    {
       system = "x86_64-linux";
       modules = [
           #Host config
@@ -45,7 +46,7 @@
 	          };
           })
       ];
-    };
+    });
 
     #Test headless server
     nixosConfigurations.container = nixpkgs.lib.nixosSystem {
