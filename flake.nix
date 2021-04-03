@@ -22,16 +22,18 @@
 
   outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-dev, home-manager }:
   let
+
+    inherit (builtins) listToAttrs attrValues attrNames readDir;
     inherit (nixpkgs) lib;
     inherit (lib) removeSuffix;
 
     pkgs = (import nixpkgs) {
-        system = "x86_64-linux";
-        config = {
-          allowUnfree = true;
-        };
-        overlays = attrValues self.overlays;
+      system = "x86_64-linux";
+      config = {
+        allowUnfree = true;
       };
+      overlays = attrValues self.overlays;
+    };
 
   in {
 
