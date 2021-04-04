@@ -35,7 +35,7 @@
       # Docker
       ./../../config/virtualisation/docker.nix
       # Credentials
-      ./../../config/services/gnome-keyring.nix
+      #./../../config/services/gnome-keyring.nix
     ];
 
   # Misc
@@ -88,7 +88,6 @@
     #jetbrains.idea-ultimate
     atom
     postgresql
-    dotnetCorePackages.net_5_0
     dotnet-sdk_5
     # MAINTAINED NIXPKGS
     unstable.quich
