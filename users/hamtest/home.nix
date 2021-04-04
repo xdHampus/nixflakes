@@ -30,7 +30,7 @@ in
     ./../../programs/alacritty/default.nix
     ./../../programs/git/default.nix
     ./../../programs/vscode/default.nix
-    ./../../programs/gnome-keyring/default.nix
+    #./../../programs/gnome-keyring/default.nix
     ./../../config/services/xscreensaver.nix    
   ];
 

@@ -35,7 +35,7 @@
       # Docker
       ./../../config/virtualisation/docker.nix
       # Credentials
-      #./../../config/services/gnome-keyring.nix
+      ./../../config/services/gnome-keyring.nix
     ];
 
   # Misc
