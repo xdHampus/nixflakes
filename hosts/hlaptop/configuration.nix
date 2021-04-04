@@ -81,6 +81,7 @@
     weechat
     # UTILITY
     pavucontrol
+    keepassxc
     # DEV
     jdk
     #jetbrains.idea-ultimate
