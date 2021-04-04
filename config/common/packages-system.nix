@@ -9,7 +9,8 @@
     '')
 
     vim
-    git
+    #git
+    gitFull
     wget
     zip
     unzip
