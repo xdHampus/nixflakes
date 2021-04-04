@@ -87,6 +87,8 @@
     #jetbrains.idea-ultimate
     atom
     postgresql
+    dotnetCorePackages.net_5_0
+    dotnet-sdk_5
     # MAINTAINED NIXPKGS
     unstable.quich
 
