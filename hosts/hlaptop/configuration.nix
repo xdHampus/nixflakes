@@ -85,7 +85,7 @@
     keepassxc
     # DEV
     jdk
-    #jetbrains.idea-ultimate
+    jetbrains.idea-ultimate
     atom
     postgresql
     dotnet-sdk_5
