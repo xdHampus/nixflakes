@@ -72,7 +72,10 @@
   nix.allowedUsers = [ "@wheel" ];
   nix.trustedUsers = [ "root" "@wheel"  ];
 
-
+  programs.java = with pkgs; {
+    enable = true;
+    package = jdk;
+  };
 
   # Basic packages
   environment.systemPackages = with pkgs; [
@@ -84,7 +87,6 @@
     pavucontrol
     keepassxc
     # DEV
-    jdk
     jetbrains.idea-ultimate
     atom
     postgresql
