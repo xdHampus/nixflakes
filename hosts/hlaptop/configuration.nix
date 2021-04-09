@@ -86,7 +86,7 @@
     # UTILITY
     pavucontrol
     keepassxc
-    quich
+    unstable.quich
     # DEV
     jetbrains.idea-ultimate
     atom
