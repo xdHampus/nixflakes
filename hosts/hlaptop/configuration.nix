@@ -34,6 +34,8 @@
       #./../../config/services/postgres.nix
       # Docker
       #./../../config/virtualisation/docker.nix
+      # Virtual Box
+      ./../../config/virtualisation/virtualbox.nix
       # Credentials
       ./../../config/services/gnome-keyring.nix
     ];
@@ -65,9 +67,10 @@
     isNormalUser = true;
     home = "/home/hamtest";
     description = "Hamtest";
-    extraGroups = [ "users" "audio" "wheel" "networkmanager" "docker"];
+    extraGroups = [ "users" "audio" "wheel" "networkmanager" "docker" "vboxusers" ];
   };
 
+ 
   # Nix config
   nix.allowedUsers = [ "@wheel" ];
   nix.trustedUsers = [ "root" "@wheel"  ];
