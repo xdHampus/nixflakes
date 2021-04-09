@@ -31,9 +31,9 @@
       # Extra
       #
       # Postgres
-      ./../../config/services/postgres.nix
+      #./../../config/services/postgres.nix
       # Docker
-      ./../../config/virtualisation/docker.nix
+      #./../../config/virtualisation/docker.nix
       # Credentials
       ./../../config/services/gnome-keyring.nix
     ];
@@ -86,13 +86,19 @@
     # UTILITY
     pavucontrol
     keepassxc
+    quich
     # DEV
     jetbrains.idea-ultimate
     atom
-    postgresql
-    dotnet-sdk_5
-    # MAINTAINED NIXPKGS
-    unstable.quich
+    jetbrains.clion
+    gcc
+    gdb
+    ninja
+    cmake
+    #postgresql
+    #dotnet-sdk_5
+    
+
 
  ];
 
