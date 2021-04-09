@@ -54,7 +54,7 @@ myBrowser        = "firefox"
 myGuiFileManager = "dfilemanager"
 myPdfReader      = "zathura"
 myPrintScreen    = "spectacle"
-myStatusBar      = "xmobar /etc/nixos/programs/xmonad/xmobarrc.hs"
+myStatusBar      = "xmobar" -- /etc/nixos/programs/xmonad/xmobarrc.hs
 
 -- Command to use for the various menus
 --  myLauncher is the menu for opening applications
