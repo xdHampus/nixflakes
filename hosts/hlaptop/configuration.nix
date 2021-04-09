@@ -93,6 +93,7 @@
     # DEV
     jetbrains.idea-ultimate
     atom
+    genymotion
     jetbrains.clion
     gcc
     gdb
