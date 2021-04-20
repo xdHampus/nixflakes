@@ -2,7 +2,7 @@
 
 {
   services = {
-      lorri.enable = true;
+      #lorri.enable = true;
       printing.enable = true;
   };
 }
