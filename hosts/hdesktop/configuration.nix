@@ -12,7 +12,7 @@
       # System packages
       ./../../config/common/packages-system.nix
       # Include an Xorg configuration
-      ./../../config/de/xmonad.nix
+      ./../../config/common/desktops-i3.nix
       # Bootloader
       ./../../config/common/bootloader-uefi.nix
       # Default hardware settings
@@ -25,19 +25,21 @@
       ./../../config/common/services.nix
       # Sound
       ./../../config/common/sound.nix
-      # Locales
-      ./../../config/common/security.nix
+      # Locals
+      ./../../config/common/locale-dk.nix
 
       # Extra
       #
       # Postgres
-      #./../../config/services/postgres.nix
+      ./../../config/services/postgres.nix
       # Docker
       #./../../config/virtualisation/docker.nix
       # Virtual Box
       ./../../config/virtualisation/virtualbox.nix
       # Credentials
       ./../../config/services/gnome-keyring.nix
+      # MPD
+      ./../../config/services/mpd.nix
     ];
 
   # Misc
@@ -45,8 +47,22 @@
 
   # Machine specific Xorg settings, mainly drivers
   services.xserver = {
-    videoDrivers = [ "modesetting" ];
-    useGlamor = true;
+    videoDrivers = [ 
+    	"nvidia" 
+    ];
+    # Fix mouse issue
+    config = ''
+        Section "InputClass"
+                Identifier     "Mouse Remap"
+                 MatchProduct   "Mad Catz Mad Catz R.A.T.TE"
+                MatchDevicePath "/dev/input/event*"
+                Option         "ButtonMapping" " 1 2 3 4 5 6 7 8 9 10 11 12 0 0 0"
+                Option        "ZAxisMapping" "4 5 6 7"
+        EndSection	    
+    '';
+  };
+  hardware.nvidia = {
+  	modesetting.enable = true;
   };
 
   # Networking
@@ -67,8 +83,28 @@
     isNormalUser = true;
     home = "/home/hadmin";
     description = "Hadmin";
-    extraGroups = [ "users" "audio" "wheel" "networkmanager" "docker" "vboxusers" ];
+    extraGroups = [ "users" "audio" "mpd"  "wheel" "networkmanager" "docker" "vboxusers" ];
   };
+
+  # Multi monitor
+  # also configured per user
+  # due to issues with nvidia
+  services.xserver.xrandrHeads = [
+     {
+      output = "DVI-D-0";
+      primary = false;
+      monitorConfig = "Option \"Left-off\" \"HDMI-0\"";
+    }
+    {
+      output = "HDMI-0";
+      primary = true;
+      monitorConfig = "Option \"Left-off\" \"VGA-0\"";
+    }
+    {
+      output = "VGA-0";
+      primary = false;
+    }
+ ];   
 
 
   # Nix config
@@ -82,6 +118,7 @@
 
   # Basic packages
   environment.systemPackages = with pkgs; [
+    sxhkd    
 
     # SOCIAL
     discord
@@ -89,7 +126,6 @@
     # UTILITY
     pavucontrol
     keepassxc
-    unstable.quich
     # DEV
     jetbrains.idea-ultimate
     atom
@@ -99,8 +135,12 @@
     gdb
     ninja
     cmake
+	pgweb
+
     #postgresql
     #dotnet-sdk_5
+    # AUDIO
+    ncmpcpp    
 
  ];
 
