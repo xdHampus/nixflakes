@@ -22,7 +22,10 @@ in
         hp.dbus
         hp.monad-logger
       ];
-      config = ./xmonad.hs;
+      libFiles = {
+        "xmobarrc.hs" = ./xmobarrc.hs;
+      };
+      config = ./xmonadN2.hs;
     };
   };
 }

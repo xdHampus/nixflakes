@@ -81,7 +81,7 @@
       system = "x86_64-linux";
       modules = [
             
-          ./hosts/hlaptop/configuration.nix
+          ./hosts/hdesktop/configuration.nix
 
           #Home manager
           home-manager.nixosModules.home-manager ({

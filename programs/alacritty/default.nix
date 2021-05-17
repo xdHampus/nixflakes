@@ -4,7 +4,7 @@
   programs.alacritty = {
     enable = true;
     settings = {
-      background_opacity = 0.8;
+      background_opacity = 0.85;
       bell = {
         animation = "EaseOutExpo";
         duration = 5;
@@ -12,8 +12,8 @@
       };
       colors = {
         primary = {
-          background = "#040404";
-          foreground = "#c5c8c6";
+          background = "#282c34";
+          foreground = "#abb2bf";
         };
       };
       font = {
