@@ -9,7 +9,6 @@
       layout = "dk";
       libinput = {
         enable = true;
-        disableWhileTyping = true;
       };
       xkbOptions = ""; # Remap keys
 

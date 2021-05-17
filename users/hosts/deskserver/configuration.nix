@@ -12,9 +12,7 @@
       # System packages
       ./../../config/common/packages-system.nix
       # Include an Xorg configuration
-      ./../../config/de/xmonad.nix
-      # Bootloader
-      ./../../config/common/bootloader-uefi.nix
+      ./../../config/de/xfce.nix
       # Default hardware settings
       ./../../config/common/hardware-default-intel.nix
       # Nix config
@@ -35,13 +33,20 @@
       # Docker
       #./../../config/virtualisation/docker.nix
       # Virtual Box
-      ./../../config/virtualisation/virtualbox.nix
+      #./../../config/virtualisation/virtualbox.nix
       # Credentials
       ./../../config/services/gnome-keyring.nix
     ];
 
+  # Legacy boot settings
+  boot.loader.grub = {
+    enable = true;
+    version = 2;
+    device = "/dev/sdb";
+  };
   # Misc
   nixpkgs.config.allowUnfree = true;
+
 
   # Machine specific Xorg settings, mainly drivers
   services.xserver = {
@@ -51,7 +56,7 @@
 
   # Networking
   networking = {
-    hostName = "hdesktop";
+    hostName = "deskserver";
     networkmanager = {
       enable = true;
       packages = [ pkgs.networkmanager_openvpn ];
@@ -63,11 +68,11 @@
 
 
   # User accounts
-  users.users.hadmin = {
+  users.users.servuser = {
     isNormalUser = true;
-    home = "/home/hadmin";
-    description = "Hadmin";
-    extraGroups = [ "users" "audio" "wheel" "networkmanager" "docker" "vboxusers" ];
+    home = "/home/servuser";
+    description = "ServerUser";
+    extraGroups = [ "users" "audio" "wheel" "networkmanager" ];
   };
 
 
@@ -82,27 +87,14 @@
 
   # Basic packages
   environment.systemPackages = with pkgs; [
-
-    # SOCIAL
-    discord
-    weechat
-    # UTILITY
-    pavucontrol
-    keepassxc
-    unstable.quich
-    # DEV
-    jetbrains.idea-ultimate
-    atom
-    genymotion
-    jetbrains.clion
-    gcc
-    gdb
-    ninja
-    cmake
-    #postgresql
-    #dotnet-sdk_5
-
+     #Runtimes
+     dotnetCorePackages.net_5_0 #.NET 5
  ];
 
+
+
+
+
   system.stateVersion = "21.05";
+
 }
