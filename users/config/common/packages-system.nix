@@ -23,7 +23,7 @@
     xterm
     rofi
     pcmanfm
-    #xmobar
+    xmobar
 
     ];
   };
