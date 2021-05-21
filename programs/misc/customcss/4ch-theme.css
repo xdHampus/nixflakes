@@ -1,0 +1,58 @@
+:root {
+    --black:#282c34;
+    --black-light:#2b2f38;
+    --black-light2:#333742;
+    --white:#abb2bf;
+    --red-light:#e06c75;
+    --red-dark:#be5046;
+    --green:#98c379;
+    --yellow-light:#e5c07b;
+    --yellow-dark:#d19a66;
+    --blue:#61afef;
+    --magenta:#c678dd;
+    --cyan:#56b6c2;
+    --grey-dark:#4b5263;
+    --grey-dark2:#4b5263;
+    --grey-light:#5c6370;
+}
+
+
+
+body {	
+    background:var(--black) none;
+ 	color: var(--white);
+    font-family:arial,helvetica,sans-serif;
+    font-size:10pt;
+    margin-left:0;
+    margin-right:0;
+    margin-top:5px;
+    padding-left:5px;
+    padding-right:5px
+}
+
+
+div.post {
+	background-color: var(--black-light);
+	border: 3;
+	border-color: var(--grey-dark);
+}
+
+
+#quickReply, .postblock, textarea, .rc-anchor-dark, input, td, #threadWatcher {
+	color: var(--white);
+	background-color: var(--black) !important;
+	border: 3 !important;
+	border-color: var(--grey-dark) !important;
+}
+
+.reply:target, .reply.highlight {
+	background-color: var(--black-light2) !important;
+	border: 3 !important;
+	border-color: var(--grey-dark2) !important;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid var(--grey-dark) !important;
+    height: 0;
+}

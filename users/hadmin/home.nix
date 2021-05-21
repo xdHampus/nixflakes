@@ -15,8 +15,13 @@ let
   gitPkgs = with pkgs.gitAndTools; [
   ];
 
+
+
 in
 {
+
+
+	
   programs.home-manager.enable = true;
 
   imports = [
