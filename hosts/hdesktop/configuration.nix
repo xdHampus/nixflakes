@@ -40,6 +40,8 @@
       ./../../config/services/gnome-keyring.nix
       # MPD
       ./../../config/services/mpd.nix
+	  # Backup personal files
+	  ./../../config/services/borgbackup-main.nix
     ];
 
   # Misc
@@ -136,7 +138,8 @@
     ninja
     cmake
 	pgweb
-
+    borgbackup
+    
     #postgresql
     #dotnet-sdk_5
     # AUDIO
