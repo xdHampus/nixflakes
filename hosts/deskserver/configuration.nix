@@ -91,6 +91,9 @@
 
   # Basic packages
   environment.systemPackages = with pkgs; [
+    # services
+    borgbackup    
+
     #.NET
     dotnet-sdk_5 dotnet-sdk_3 dotnet-sdk
     dotnetCorePackages.net_5_0 dotnetCorePackages.netcore_3_1 dotnet-netcore  
