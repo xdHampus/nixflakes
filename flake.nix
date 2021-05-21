@@ -54,6 +54,13 @@
           };
         };
       };
+      ncmpcpp = final: prev: {
+        ncmpcpp = prev.ncmpcpp.override {
+          visualizerSupport = true;
+          taglibSupport = true;          
+        };
+      };
+     
     };
 
 
@@ -63,9 +70,10 @@
       modules = [
 
           ./hosts/deskserver/configuration.nix
-
+          
           #Home manager
           home-manager.nixosModules.home-manager ({
+          
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users = import ./nix/user-import.nix {
@@ -83,14 +91,19 @@
 
           ./hosts/hdesktop/configuration.nix
 
+
           #Home manager
           home-manager.nixosModules.home-manager ({
+          
+
+
+          
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users = import ./nix/user-import.nix {
               users = [ "hadmin" ];
               pkgs = nixpkgs;
-                  };
+          	};
           })
       ];
       inherit pkgs;
@@ -142,3 +155,21 @@
 
   };
 }
+
+
+ #           nixpkgs.overlays = [ 
+#          		(self: super: {
+#	    			  ncmpcpp = super.ncmpcpp.override { 
+  #						visualizerSupport = true;
+  #						taglibSupport = true;
+ # 					}; 
+#	  			})
+ #         		(self: super: {
+#	    			openssh = super.openssh.override {
+#	      				hpnSupport = true;
+#	      				withKerberos = true;
+#	      				kerberos = self.libkrb5;
+#	    			};
+#	  			}) 
+#			];
+
