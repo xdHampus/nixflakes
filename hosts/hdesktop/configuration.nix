@@ -39,7 +39,7 @@
       # Credentials
       ./../../config/services/gnome-keyring.nix
       # MPD
-      ./../../config/services/mpd.nix
+      #./../../config/services/mpd.nix
 	  # Backup personal files
 	  ./../../config/services/borgbackup-main.nix
     ];
