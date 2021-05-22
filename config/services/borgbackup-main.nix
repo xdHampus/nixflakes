@@ -27,7 +27,7 @@
     	daily = 7; 
 		weekly = 4;
 		monthly = 3;
-    }
+    };
   };
 
 
