@@ -39,7 +39,7 @@ in
   home = {
     username      = "hamtest";
     homeDirectory = "/home/hamtest";
-    stateVersion  = "21.11";
+    stateVersion  = "21.05";
 
     packages = defaultPkgs ++ gitPkgs ++ haskellPkgs ++ xmonadPkgs ;
 
