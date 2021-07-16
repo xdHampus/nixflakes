@@ -5,6 +5,7 @@ let
     # fixes the `ar` error required by cabal
     binutils-unwrapped
     stow
+    micro
   ];
 
   gitPkgs = with pkgs.gitAndTools; [
@@ -45,7 +46,7 @@ in
 
     sessionVariables = {
       DISPLAY = ":0";
-      EDITOR = "nano";
+      EDITOR = "micro";
     };
   };
 
