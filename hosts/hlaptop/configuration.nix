@@ -12,7 +12,7 @@
       # System packages
       ./../../config/common/packages-system.nix
       # Include an Xorg configuration
-      ./../../config/de/xmonad.nix
+      ./../../config/de/xfce.nix
       # Bootloader
       ./../../config/common/bootloader-uefi.nix
       # Default hardware settings
@@ -99,17 +99,13 @@
     gdb
     ninja
     cmake
+    meson
+    meson-tools
     #postgresql
     #dotnet-sdk_5
 
-
-
  ];
 
-
-
-
-
-  system.stateVersion = "21.05";
+  system.stateVersion = "21.11";
 
 }

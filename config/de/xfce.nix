@@ -12,11 +12,11 @@
       };
 
       desktopManager = {
-	xterm.enable = true;
+	      xterm.enable = true;
         xfce = {
-	  enable = true;
+	        enable = true;
       	  enableXfwm = true;
-	};
+	      };
       };
       displayManager.defaultSession = "xfce";
     };

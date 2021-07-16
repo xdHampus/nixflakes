@@ -26,7 +26,7 @@ in
 
   imports = [
     ./../../programs/firefox/default.nix
-    ./../../programs/xmonad/default.nix
+    #./../../programs/xmonad/default.nix
     ./../../programs/alacritty/default.nix
     ./../../programs/git/default.nix
     ./../../programs/vscode/default.nix
@@ -39,7 +39,7 @@ in
   home = {
     username      = "hamtest";
     homeDirectory = "/home/hamtest";
-    stateVersion  = "21.05";
+    stateVersion  = "21.11";
 
     packages = defaultPkgs ++ gitPkgs ++ haskellPkgs ++ xmonadPkgs ;
 
