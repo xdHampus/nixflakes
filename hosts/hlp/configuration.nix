@@ -32,10 +32,6 @@
       #
       # Postgres
       #./../../config/services/postgres.nix
-      # Docker
-      ./../../config/virtualisation/docker.nix
-      # Virtual Box
-      ./../../config/virtualisation/virtualbox.nix
       # Credentials
       ./../../config/services/gnome-keyring.nix
     ];
@@ -51,7 +47,7 @@
 
   # Networking
   networking = {
-    hostName = "hlaptop";
+    hostName = "hlp";
     networkmanager = {
       enable = true;
       packages = [ pkgs.networkmanager_openvpn ];
@@ -63,13 +59,18 @@
 
 
   # User accounts
-  users.users.hamtest = {
+  users.users.work = {
     isNormalUser = true;
-    home = "/home/hamtest";
-    description = "Hamtest";
+    home = "/home/work";
+    description = "Work User";
     extraGroups = [ "users" "audio" "wheel" "networkmanager" "docker" "vboxusers" ];
   };
-
+  users.users.personal = {
+    isNormalUser = true;
+    home = "/home/personal";
+    description = "Personal User";
+    extraGroups = [ "users" "audio" "wheel" "networkmanager" "docker" "vboxusers" ];
+  };
 
   # Nix config
   nix.allowedUsers = [ "@wheel" ];
@@ -82,30 +83,10 @@
 
   # Basic packages
   environment.systemPackages = with pkgs; [
-
-    # SOCIAL
-    discord
-    weechat
-    # UTILITY
     pavucontrol
     keepassxc
-    unstable.quich
-    # DEV
-    jetbrains.idea-ultimate
-    atom
-    genymotion
-    jetbrains.clion
-    gcc
-    gdb
-    ninja
-    cmake
-    meson
-    meson-tools
-    #postgresql
-    #dotnet-sdk_5
-
+    micro
  ];
 
   system.stateVersion = "21.05";
-
 }

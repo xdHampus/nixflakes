@@ -65,7 +65,7 @@
 
 
 
- nixosConfigurations.deskserver = nixpkgs.lib.nixosSystem {
+ 	nixosConfigurations.deskserver = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
 
@@ -85,7 +85,7 @@
       inherit pkgs;
     };
 
- nixosConfigurations.hdesktop = nixpkgs.lib.nixosSystem {
+ 	nixosConfigurations.hdesktop = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
 
@@ -123,7 +123,28 @@
       ];
       inherit pkgs;
     };
+    nixosConfigurations.hlp = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+            
+          ./hosts/hlp/configuration.nix
 
+          #Home manager
+          home-manager.nixosModules.home-manager ({
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users = import ./nix/user-import.nix { 
+              users = [ 
+              	"hamtest"
+              	"personal"
+              	"work" 
+              ];
+              pkgs = nixpkgs;
+	          };	          	          	          
+          })
+      ];
+      inherit pkgs;
+    };
     #Test headless server
     nixosConfigurations.container = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
