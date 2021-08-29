@@ -15,37 +15,33 @@ let
   ];
 
 
-
 in
 {
-
-
 	
-  programs.home-manager.enable = true;
 
-  imports = 
-  	if network.hostName == "hlp" then 
-	    [
-	    ./../../programs/firefox/default.nix
-	    ./../../programs/alacritty/default.nix
-	    ./../../programs/git/default.nix
-	    ./../../programs/vscode/default.nix
-	  	]; 
-  	elseif network.hostName == "hadmin" then
-	  	[
-	    ./../../programs/firefox/default.nix
-	    ./../../programs/i3/default.nix
-	    ./../../programs/alacritty/default.nix
-	    ./../../programs/git/default.nix
-	    ./../../programs/vscode/default.nix
-		./../../programs/micro/default.nix
-	    #./../../programs/gnome-keyring/default.nix
-	  	];
-  	else 
-  		[]; 
-  	fi
-
-
+  imports = [ ] ++ 
+  	(if builtins.getEnv "HOSTNAME" == "hlp" then 
+		[ 
+		    ./../../programs/firefox/default.nix
+		    ./../../programs/alacritty/default.nix
+		    ./../../programs/git/default.nix
+		    ./../../programs/vscode/default.nix		
+	    ]
+	else if builtins.getEnv "HOSTNAME" == "hadmin" then 
+		[ 
+		    ./../../programs/firefox/default.nix
+		    ./../../programs/i3/default.nix
+		    ./../../programs/alacritty/default.nix
+		    ./../../programs/git/default.nix
+		    ./../../programs/vscode/default.nix
+			./../../programs/micro/default.nix
+		    #./../../programs/gnome-keyring/default.nix
+		]
+	else 
+		[]
+	);
+ 
+  programs.home-manager.enable =  true;
   xdg.enable = true;
 
   xdg.configFile = {
@@ -88,4 +84,5 @@ in
 
   # notifications about home-manager news
   news.display = "silent";
+
 }

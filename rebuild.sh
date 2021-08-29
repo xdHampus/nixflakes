@@ -8,4 +8,4 @@ else
   flake=$HOSTNAME
 fi
 
-nixos-rebuild switch --flake .#$flake
+nixos-rebuild switch $2  --flake .#$flake
