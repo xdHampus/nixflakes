@@ -1,4 +1,6 @@
 {
     "Alt-/": "lua:comment.comment",
-    "CtrlUnderscore": "lua:comment.comment"
+    "CtrlUnderscore": "lua:comment.comment",
+	"Ctrl-n":	"command:run pdflatex main.tex",
+	"Ctrl-p":	"command:run zathura main.pdf"
 }
