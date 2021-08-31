@@ -39,7 +39,8 @@
       # Credentials
       ./../../config/services/gnome-keyring.nix
       # MPD
-      ./../../config/services/mpd-local.nix
+      #./../../config/services/mpd-local.nix
+      ./../../config/services/mpd-client.nix
 	  # Backup personal files
 	  ./../../config/services/borgbackup-main.nix
     ];
@@ -123,7 +124,7 @@
     sxhkd    
 
     # SOCIAL
-    discord
+    #discord
     weechat
     # UTILITY
     pavucontrol

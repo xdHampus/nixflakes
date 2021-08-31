@@ -59,8 +59,6 @@
           visualizerSupport = true;
           taglibSupport = true;          
         };
-      };
-     
     };
 
 

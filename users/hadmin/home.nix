@@ -10,6 +10,8 @@ let
 	feh
 	scrot
 	vivaldi
+
+	discord
   ];
 
   gitPkgs = with pkgs.gitAndTools; [
@@ -19,7 +21,6 @@ let
 
 in
 {
-
 
 	
   programs.home-manager.enable = true;
@@ -31,6 +32,7 @@ in
     ./../../programs/git/default.nix
     ./../../programs/vscode/default.nix
 	./../../programs/micro/default.nix
+	./../../programs/zathura/default.nix
     #./../../programs/gnome-keyring/default.nix
   ];
 
