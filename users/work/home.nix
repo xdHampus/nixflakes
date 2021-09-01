@@ -4,6 +4,7 @@ let
   defaultPkgs = with pkgs; [
     micro
     firefox
+    alacritty
   ];
 
   gitPkgs = with pkgs.gitAndTools; [
@@ -29,7 +30,7 @@ in
 
   imports = [
     ./../../programs/firefox/default.nix
-    ./../../programs/alacritty/default.nix
+    #./../../programs/alacritty/default.nix
     ./../../programs/git/default.nix
     ./../../programs/vscode/default.nix
     ./../../config/services/xscreensaver.nix    
