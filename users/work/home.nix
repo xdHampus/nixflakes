@@ -20,7 +20,6 @@ let
 
   devPkgs = with pkgs; [
 	jetbrains.idea-ultimate
-  	
   ];
 
 in
@@ -32,7 +31,8 @@ in
     ./../../programs/alacritty/default.nix
     ./../../programs/git/default.nix
     ./../../programs/vscode/default.nix
-    ./../../config/services/xscreensaver.nix    
+    ./../../config/services/xscreensaver.nix
+    ./../../config/virtualisation/docker.nix
   ];
 
   xdg.enable = true;

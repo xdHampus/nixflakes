@@ -34,6 +34,8 @@
       #./../../config/services/postgres.nix
       # Credentials
       ./../../config/services/gnome-keyring.nix
+      # Docker
+      #./../../config/virtualisation/docker.nix
     ];
 
   # Misc
