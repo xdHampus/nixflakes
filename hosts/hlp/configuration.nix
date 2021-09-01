@@ -59,6 +59,12 @@
 
 
   # User accounts
+  users.users.hamtest = {
+    isNormalUser = true;
+    home = "/home/hamtest";
+    description = "Old Test User";
+    extraGroups = [ "users" "audio" "wheel" "networkmanager" "docker" "vboxusers" ];
+  };  
   users.users.work = {
     isNormalUser = true;
     home = "/home/work";
