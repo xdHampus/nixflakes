@@ -5,6 +5,7 @@ let
     micro
     firefox
     alacritty
+    python3Full
   ];
 
   gitPkgs = with pkgs.gitAndTools; [
@@ -33,7 +34,6 @@ in
     ./../../programs/git/default.nix
     ./../../programs/vscode/default.nix
     ./../../config/services/xscreensaver.nix
-    ./../../config/virtualisation/docker.nix
   ];
 
   xdg.enable = true;

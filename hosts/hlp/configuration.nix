@@ -35,7 +35,7 @@
       # Credentials
       ./../../config/services/gnome-keyring.nix
       # Docker
-      #./../../config/virtualisation/docker.nix
+      ./../../config/virtualisation/docker.nix
     ];
 
   # Misc
@@ -61,18 +61,18 @@
 
 
   # User accounts
-  users.users.hamtest = {
-    isNormalUser = true;
-    home = "/home/hamtest";
-    description = "Old Test User";
-    extraGroups = [ "users" "audio" "wheel" "networkmanager" "docker" "vboxusers" ];
-  };  
   users.users.work = {
     isNormalUser = true;
     home = "/home/work";
     description = "Work User";
     extraGroups = [ "users" "audio" "wheel" "networkmanager" "docker" "vboxusers" ];
   };
+  users.users.hamtest = {
+    isNormalUser = true;
+    home = "/home/hamtest";
+    description = "Old Test User";
+    extraGroups = [ "users" "audio" "wheel" "networkmanager" "docker" "vboxusers" ];
+  };  
   users.users.personal = {
     isNormalUser = true;
     home = "/home/personal";
