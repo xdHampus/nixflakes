@@ -5,41 +5,25 @@
 {
   imports =
     [
-      # Core configuration
-      #
-      # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      # System packages
-      ./../../config/common/packages-system.nix
-      # Include an Xorg configuration
-      ./../../config/de/xfce.nix
-      # Bootloader
-      ./../../config/common/bootloader-uefi.nix
-      # Default hardware settings
-      ./../../config/common/hardware-default-intel.nix
-      # Nix config
-      ./../../config/common/nix.nix
-      # Security - (Sudo, DOAS, wheel etc.)
-      ./../../config/common/security.nix
-      # Services
-      ./../../config/common/services.nix
-      # Sound
-      ./../../config/common/sound.nix
-      # Locales
-      ./../../config/common/security.nix
-
-      # Extra
-      #
-      # Postgres
-      #./../../config/services/postgres.nix
-      # Credentials
-      ./../../config/services/gnome-keyring.nix
-      # Docker
-      ./../../config/virtualisation/docker.nix
-    ];
+    ] 
+      ++  (import ./../../modules/module-list.nix)
+    ;
 
   # Misc
   nixpkgs.config.allowUnfree = true;
+  
+  # Enabled core modules
+  modules.common.packages.enable = true;
+  modules.de.xfce.enable = true;
+  modules.common.boot.uefi.enable = true;
+  modules.common.hardware.enable = true;
+  modules.common.nix.enable = true;
+  modules.common.security.enable = true;
+  modules.common.services.enable = true;
+  modules.common.sound.enable = true;
+  # Other modules
+  #modules.services.gnome-keyring = true;
 
   # Machine specific Xorg settings, mainly drivers
   services.xserver = {
@@ -54,9 +38,12 @@
       enable = true;
       packages = [ pkgs.networkmanager_openvpn ];
     };
-    useDHCP = false;
+    #useDHCP = false;
     firewall.enable = true;
-    firewall.allowPing = true;
+    #firewall.allowPing = true;
+    firewall.allowedTCPPorts = [
+    	9090
+    ];
   };
 
 
@@ -65,18 +52,6 @@
     isNormalUser = true;
     home = "/home/work";
     description = "Work User";
-    extraGroups = [ "users" "audio" "wheel" "networkmanager" "docker" "vboxusers" ];
-  };
-  users.users.hamtest = {
-    isNormalUser = true;
-    home = "/home/hamtest";
-    description = "Old Test User";
-    extraGroups = [ "users" "audio" "wheel" "networkmanager" "docker" "vboxusers" ];
-  };  
-  users.users.personal = {
-    isNormalUser = true;
-    home = "/home/personal";
-    description = "Personal User";
     extraGroups = [ "users" "audio" "wheel" "networkmanager" "docker" "vboxusers" ];
   };
 
@@ -94,7 +69,9 @@
     pavucontrol
     keepassxc
     micro
+    python3
+    xclip
  ];
 
-  system.stateVersion = "21.05";
+  system.stateVersion = "22.05";
 }

@@ -6,12 +6,12 @@ let
     firefox
     alacritty
     python3Full
+    zathura
   ];
 
   gitPkgs = with pkgs.gitAndTools; [
   
   ];
-
 
   socialPkgs = with pkgs; [
   	discord
@@ -22,26 +22,28 @@ let
 
   devPkgs = with pkgs; [
 	jetbrains.idea-ultimate
+	kubernetes
+	kubectl
   ];
 
 in
 {
   programs.home-manager.enable = true;
-
   imports = [
-    ./../../programs/firefox/default.nix
-    #./../../programs/alacritty/default.nix
-    ./../../programs/git/default.nix
-    ./../../programs/vscode/default.nix
-    ./../../config/services/xscreensaver.nix
-  ];
+  ] 
+    ++  (import ./../../modules/hm/module-list.nix)
+  ;
+
+  modules.tools.firefox.enable = true;
+  modules.dev.git.github.enable = true;
+  modules.dev.vscode.enable = true;
 
   xdg.enable = true;
 
   home = {
     username      = "work";
     homeDirectory = "/home/work";
-    stateVersion  = "21.05";
+    stateVersion  = "22.05";
 
     packages = defaultPkgs ++ gitPkgs ++ devPkgs ++ socialPkgs ;
 
@@ -56,7 +58,5 @@ in
     html.enable = false;
     manpages.enable = false;
   };
-
-  # notifications about home-manager news
   news.display = "silent";
 }
