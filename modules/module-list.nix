@@ -1,13 +1,29 @@
-#find . -type f | grep .nix
+#find . -type f -not -path "./hm/*" -not -path "./module-list.nix" | grep .nix
 [
-	./de/xfce.nix
-	./common/security.nix
-	./common/services.nix
-	./common/nix.nix
-	./common/sound.nix
-	./common/bootloader-uefi.nix
-	./common/locale-dk.nix
-	./common/packages-system.nix
-	./common/hardware-default-intel.nix
-	./services/gnome-keyring/default.nix
+  ./virtualisation/docker/default.nix
+  ./virtualisation/virtualbox/default.nix
+  ./common/security.nix
+  ./common/services.nix
+  ./common/de/xfcei3.nix
+  ./common/de/nonei3.nix
+  ./common/de/xfce.nix
+  ./common/xorg.nix
+  ./common/nix.nix
+  ./common/sound.nix
+  ./common/bootloader-uefi.nix
+  ./common/locale-dk.nix
+  ./common/packages-system.nix
+  ./common/hardware-default-intel.nix
+  ./services/gnome-keyring/default.nix
+  ./services/borgbackup/personal-music.nix
+  ./services/borgbackup/personal-main.nix
+  ./services/mpd/mpd-server.nix
+  ./services/mpd/mpd-client.nix
+  ./services/mpd/mpd-local.nix
+  ./services/postgres/default.nix
+  ./services/sshd/default.nix
+  ./users/servuser.nix
+  ./users/work.nix
+  ./users/personal.nix
+  ./users/guest.nix
 ]

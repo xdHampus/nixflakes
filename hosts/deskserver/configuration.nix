@@ -3,20 +3,23 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ] ++ (import ./../../modules/module-list.nix);
+  imports = [ ./hardware-configuration.nix ] ++ (import ./../../modules/module-list.nix);
 
+  # Legacy boot settings
+  boot.loader.grub = {
+    enable = true;
+    version = 2;
+    device = "/dev/sdb";
+  };
+  
   # Misc
   nixpkgs.config.allowUnfree = true;
   
   # Modules
   modules = {
-     # Core
-     common = {
+    # Core
+    common = {
       # Machine
-      boot.uefi.enable = true;
       hardware.enable = true;
       xorg.enable = true;
       de.xfce.enable = true;
@@ -27,35 +30,36 @@
       sound.enable = true; 
       packages.enable = true;
       locale.dk.enable = true;
-     };
-     # Users
-     users = {
-      work.enable = true;
-      guest.enable = true;
-      personal.enable = true;
-     };
-     # Misc
-     services = {
-      
-     };
+    };
+    # Users
+    users = {
+      servuser.enable = true;
+    };
+    # Misc
+    services = {
+      sshd.enable = true;
+    };
   };
-  
+
 
 
   # Networking
   networking = {
-    hostName = "hlp";
+    hostName = "deskserver";
     networkmanager = {
       enable = true;
       packages = [ pkgs.networkmanager_openvpn ];
     };
-    #useDHCP = false;
+    useDHCP = false;
     firewall.enable = true;
-    #firewall.allowPing = true;
-    firewall.allowedTCPPorts = [
-    	9090
-    ];
+    firewall.allowPing = true;
   };
 
+
+  # Basic packages
+  environment.systemPackages = with pkgs; [
+    # services
+    borgbackup    
+ ];
   system.stateVersion = "21.11";
 }

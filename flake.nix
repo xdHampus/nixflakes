@@ -59,23 +59,53 @@
     nixosConfigurations.hlp = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-            
           ./hosts/hlp/configuration.nix
-
           #Home manager
           home-manager.nixosModules.home-manager ({
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users = import ./nix/user-import.nix { 
-              users = [ 
-              	"work" 
-              ];
+              users = [ "personal" "guest" "work" ];
               pkgs = nixpkgs;
 	          };	          	          	          
           })
       ];
       inherit pkgs;
     };
+
+ 	nixosConfigurations.deskserver = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+          ./hosts/deskserver/configuration.nix
+          #Home manager
+          home-manager.nixosModules.home-manager ({
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users = import ./nix/user-import.nix {
+              users = [ "servuser" ];
+              pkgs = nixpkgs;
+            };
+          })
+      ];
+      inherit pkgs;
+    };
+
+ 	nixosConfigurations.hdesktop = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+          ./hosts/hdesktop/configuration.nix
+          #Home manager
+          home-manager.nixosModules.home-manager ({
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users = import ./nix/user-import.nix {
+              users = [ "personal" "work" ];
+              pkgs = nixpkgs;
+          	};
+          })
+      ];
+      inherit pkgs;
+  };     
 
   };
 }

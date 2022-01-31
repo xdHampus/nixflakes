@@ -1,51 +1,45 @@
 { config, lib, pkgs, stdenv, ... }:
 
 let
-  defaultPkgs = with pkgs; [
-    micro
-    firefox
-    alacritty
-    python3Full
-    zathura
-  ];
-
-  gitPkgs = with pkgs.gitAndTools; [
+  extraPkgs = with pkgs; [
   
-  ];
-
-  socialPkgs = with pkgs; [
-  	discord
-  	teams
-  	zoom-us
-  ];
-
-
-  devPkgs = with pkgs; [
-	jetbrains.idea-ultimate
-	kubernetes
-	kubectl
   ];
 
 in
 {
   programs.home-manager.enable = true;
-  imports = [
-  ] 
-    ++  (import ./../../modules/hm/module-list.nix)
-  ;
+  imports = [] ++ (import ./../../modules/hm/module-list.nix);
 
-  modules.tools.firefox.enable = true;
-  modules.dev.git.github.enable = true;
-  modules.dev.vscode.enable = true;
+  modules = {
+    core = {
+      communication.enable = true;
+    };
+    dev = {
+      git.github.enable = true;
+      vscode.enable = true;
+      profiles = {
+        java.enable = true;
+        rest.enable = true;
+        kube.enable = true;
+      };
+    };
+    tools = {
+      firefox.enable = true;
+      alacritty.default.enable = true;
+      micro.enable = true;
+      zathura.enable = true;
+    };
+  };
+  
 
   xdg.enable = true;
 
   home = {
     username      = "work";
     homeDirectory = "/home/work";
-    stateVersion  = "22.05";
+    stateVersion  = "21.11";
 
-    packages = defaultPkgs ++ gitPkgs ++ devPkgs ++ socialPkgs ;
+    packages = extraPkgs ;
 
     sessionVariables = {
       DISPLAY = ":0";

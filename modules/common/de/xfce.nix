@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 with lib;                      
 let
-  cfg = config.modules.de.xfce;
+  cfg = config.modules.common.de.xfce;
 in {
-  options.modules.de.xfce = {
+  options.modules.common.de.xfce = {
     enable = mkEnableOption "xfce";
   };
   config = mkIf cfg.enable {

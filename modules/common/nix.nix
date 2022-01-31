@@ -9,8 +9,9 @@ in {
   config = mkIf cfg.enable {
     # Nix config
     nix = {
-      autoOptimiseStore = true;
-      package = pkgs.nixFlakes;
+      # Users
+      allowedUsers = [ "@wheel" ];
+      trustedUsers = [ "root" "@wheel"  ];
 
       # Automate garbage collection
       gc = {
@@ -18,6 +19,8 @@ in {
         dates     = "weekly";
         options   = "--delete-older-than 7d";
       };
+      autoOptimiseStore = true;
+      package = pkgs.nixFlakes;
 
       # Avoid unwanted garbage collection when using nix-direnv
       extraOptions = ''
