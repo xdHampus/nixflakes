@@ -41,6 +41,11 @@
       borgbackup.personal.music.enable = true;
       mpd.server.enable = true;
       nfs.enable = true;
+      githubrunner = {
+        enable = true;
+        url = "https://github.com/xdHampus/ereolenWrapper";
+        tokenFile = "/run/secrets/github-runner/nixos.token";
+      };
     };
   };
 
