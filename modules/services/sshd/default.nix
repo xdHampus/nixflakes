@@ -11,5 +11,9 @@ in {
     services.sshd = {
           enable = true;
     };
+    programs.ssh.pubkeyAcceptedKeyTypes = [
+      "ssh-ed25519"
+      "ssh-rsa"
+    ];
   };
 }

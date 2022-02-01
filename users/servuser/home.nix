@@ -12,6 +12,7 @@ in
   imports = [] ++ (import ./../../modules/hm/module-list.nix);
 
   modules = {
+    dev.git.github.enable = true;    
     tools = {
       firefox.enable = true;
     };

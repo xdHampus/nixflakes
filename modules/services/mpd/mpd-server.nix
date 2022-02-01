@@ -17,15 +17,10 @@ in {
       type = types.str;
       default = ''
         	audio_output {
-         	    type "pulse" # MPD must use Pulseaudio
-            	name "Pulseaudio" # Whatever you want
-      	  }
-      	  audio_output {
-      	      type                    "fifo"
-      	      name                    "my_fifo"
-      	      path                    "/tmp/mpd.fifo"
-      	      format                  "44100:16:2"
-      	  }
+        			type "null"
+        			name "MPD Server"
+        	}
+          	  
       	'';
     };
   };
@@ -36,7 +31,5 @@ in {
     	playlistDirectory = cfg.playlistDirectory;
     	extraConfig = cfg.extraConfig;
     };
-    hardware.pulseaudio.extraConfig = "load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1";
-    hardware.pulseaudio.systemWide = true;
   };
 }

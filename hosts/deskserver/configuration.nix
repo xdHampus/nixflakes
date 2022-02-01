@@ -38,6 +38,9 @@
     # Misc
     services = {
       sshd.enable = true;
+      borgbackup.personal.music.enable = true;
+      mpd.server.enable = true;
+      nfs.enable = true;
     };
   };
 
@@ -59,7 +62,8 @@
   # Basic packages
   environment.systemPackages = with pkgs; [
     # services
-    borgbackup    
+    borgbackup  
+    mpd  
  ];
   system.stateVersion = "21.11";
 }
