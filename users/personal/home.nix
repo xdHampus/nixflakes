@@ -7,6 +7,7 @@ let
   	xclip
   	feh
   	scrot
+	rofi	
   ];
 in
 {
@@ -15,27 +16,6 @@ in
 
   # Define modules
   modules = 
-    # Modules for host hlp
-    (if builtins.getEnv "HOSTNAME" == "hlp" then 
-  		{
-        core = {
-          communication.enable = true;
-        };
-        dev = {
-          git.github.enable = true;
-          vscode.enable = true;
-          profiles = {
-            java.enable = true;
-            kube.enable = true;
-          };
-        };
-        tools = {
-          firefox.enable = true;
-          alacritty.default.enable = true;
-        };  		  
-  		}
-  	# Modules for host hadmin
-  	else if builtins.getEnv "HOSTNAME" == "hadmin" then 
   		{
         core = {
           communication.enable = true;
@@ -49,7 +29,6 @@ in
           profiles = {
             java.enable = true;
             rest.enable = true;
-            csharp.enable = true;
           };
         };
         tools = {
@@ -57,15 +36,13 @@ in
           alacritty.default.enable = true;
           micro.enable = true;
         };  		  
-  		}
-  	# Modules for unknown host
-  	else {});
+  		};
   
 
   programs.home-manager.enable =  true;
   xdg.enable = true;
 
-  xdg.configFile = (if builtins.getEnv "HOSTNAME" == "hadmin" then {
+  xdg.configFile =  {
     nvidiaSettings = {
   		source = ./../../hosts/hdesktop/files/.nvidia-settings-rc;
   		target = "./../.nvidia-settings-rc";
@@ -82,7 +59,7 @@ in
   		source = ./../../resources/images/triScreenBg/37.png;
   		target = "./wallpapers/right.png";
   	};
-  } else {});
+  };
 
   home = {
     username      = "personal";
