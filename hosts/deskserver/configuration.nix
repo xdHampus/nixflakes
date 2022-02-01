@@ -61,6 +61,20 @@
     useDHCP = false;
     firewall.enable = true;
     firewall.allowPing = true;
+    firewall.allowedTCPPorts = [
+          6600
+          22
+          111
+          2049
+          
+    ];
+    firewall.allowedUDPPorts = [
+          6600
+          22
+          111
+          2049
+          
+    ];
   };
 
 
