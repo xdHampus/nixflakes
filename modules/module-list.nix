@@ -20,6 +20,7 @@
   ./services/mpd/mpd-server.nix
   ./services/mpd/mpd-client.nix
   ./services/mpd/mpd-local.nix
+  ./services/nfs/default.nix
   ./services/postgres/default.nix
   ./services/sshd/default.nix
   ./users/servuser.nix
