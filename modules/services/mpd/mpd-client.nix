@@ -51,7 +51,7 @@ in {
   config = mkIf cfg.enable {
     services.mpd = {
     	enable = true;
-    	musicDirectory = cfg.fileProtocol + "//" + cfg.host.address + cfg.musicDirectory;
+    	musicDirectory = cfg.fileProtocol + "://" + cfg.host.address + cfg.musicDirectory;
     	dbFile = null; #use host db
     	playlistDirectory = cfg.playlistDirectory;
     	extraConfig = cfg.extraConfig;
