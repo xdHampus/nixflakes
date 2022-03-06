@@ -14,6 +14,7 @@
   ./common/locale-dk.nix
   ./common/packages-system.nix
   ./common/hardware-default-intel.nix
+  ./services/githubrunner/default.nix
   ./services/gnome-keyring/default.nix
   ./services/borgbackup/personal-music.nix
   ./services/borgbackup/personal-main.nix
