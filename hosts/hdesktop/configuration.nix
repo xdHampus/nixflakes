@@ -36,6 +36,7 @@
     services = {
       mpd.client.enable = true;
       borgbackup.personal.main.enable = true;
+	  teamviewer.enable = true;
     };
   };
     
