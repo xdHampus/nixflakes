@@ -56,7 +56,7 @@
     };
 
 
-    nixosConfigurations.hlp = nixpkgs.lib.nixosSystem {
+  nixosConfigurations.hlp = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
           ./hosts/hlp/configuration.nix

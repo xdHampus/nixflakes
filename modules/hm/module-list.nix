@@ -1,6 +1,6 @@
 #find . -type f -not -path "./module-list.nix" | grep .nix
 [
-  ./dev/git/default.nix
+  ./dev/git/github.nix
   ./dev/profiles/cpp.nix
   ./dev/profiles/php.nix
   ./dev/profiles/rest.nix
@@ -13,8 +13,10 @@
   ./core/communication.nix
   ./system/gnome-keyring/default.nix
   ./system/i3/default.nix
+  ./system/keepassxc/default.nix
   ./tools/firefox/default.nix
   ./tools/alacritty/default.nix
+  ./tools/alacritty/basic.nix
   ./tools/vivaldi/default.nix
   ./tools/micro/default.nix
   ./tools/zathura/default.nix

@@ -23,9 +23,10 @@ in
         kube.enable = true;
       };
     };
+    system.keepassxc.enable = true;
     tools = {
       firefox.enable = true;
-      alacritty.default.enable = true;
+      alacritty.basic.enable = true;
       micro.enable = true;
       zathura.enable = true;
     };
@@ -37,7 +38,7 @@ in
   home = {
     username      = "work";
     homeDirectory = "/home/work";
-    stateVersion  = "21.11";
+    stateVersion  = "22.05";
 
     packages = extraPkgs ;
 

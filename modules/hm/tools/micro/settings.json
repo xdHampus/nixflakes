@@ -1,3 +1,7 @@
 {
-    "colorscheme": "dark"
+    "colorscheme": "dark",
+    "mkparents": true,
+    "tabtospaces": true,
+    "tabstospaces": true
+
 }

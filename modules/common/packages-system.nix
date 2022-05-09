@@ -28,6 +28,7 @@ in {
         pcmanfm
         micro
         xclip
+        openssh
       ];
   };
 }
