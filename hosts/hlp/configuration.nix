@@ -49,7 +49,7 @@
     hostName = "hlp";
     networkmanager = {
       enable = true;
-      packages = [ pkgs.networkmanager_openvpn ];
+      packages = [ pkgs.networkmanager-openvpn ];
     };
     #useDHCP = false;
     firewall.enable = true;

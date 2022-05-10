@@ -9,11 +9,17 @@
       home-manager.url = "github:nix-community/home-manager";
       # Extra
       nixpkgs-unstable.url = "github:NixOS/nixpkgs/master";
-      nixpkgs-dev.url = "github:xdHampus/nixpkgs/master";
+      #nixpkgs-dev.url = "github:xdHampus/nixpkgs/master";
   };
 
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, nixpkgs-dev, home-manager }:
+  outputs = inputs@{ self
+    , nixpkgs
+    , nixpkgs-unstable
+    #, nixpkgs-dev
+    , home-manager 
+  }:
+
   let
 
     inherit (builtins) listToAttrs attrValues attrNames readDir;
