@@ -43,6 +43,18 @@
   };
   
 
+  # Machine specific Xorg settings, mainly drivers
+  services.xserver = {
+    videoDrivers = [ 
+    	"nvidia" 
+    ];
+  };
+  hardware.nvidia = {
+  	modesetting.enable = true;
+  };
+
+
+
 
   # Networking
   networking = {
