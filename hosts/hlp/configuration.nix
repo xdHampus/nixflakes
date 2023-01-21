@@ -1,6 +1,6 @@
 # Main NixOS Configuration file
 
-{ config, pkgs, ... }:
+{ config, pkgs, nixpkgs-unstable, flake, ... }:
 
 {
   imports =
@@ -8,9 +8,8 @@
       ./hardware-configuration.nix
     ] ++ (import ./../../modules/module-list.nix);
 
-  # Misc
   nixpkgs.config.allowUnfree = true;
-  
+
   # Modules
   modules = {
      # Core
@@ -31,15 +30,33 @@
      # Users
      users = {
       work.enable = true;
-      guest.enable = true;
       personal.enable = true;
      };
-     # Misc
      services = {
-     
+       syncthing = {
+        enable = true;
+        vault = {
+          enable = true;
+          devices = [ 
+           "moto g(30)"
+           "hdesktopw"
+           ];
+        };
+        code = {
+          enable = true;
+          devices = [ 
+           "hdesktopw"
+          ];
+        };
+        shared = {
+          enable = true;
+          devices = [ 
+           "hdesktopw" 
+          ];
+        };
+       };
      };
      virtualisation.docker.enable = true;
-
   };
   
 
@@ -53,23 +70,27 @@
   	modesetting.enable = true;
   };
 
-
-
-
+    
   # Networking
   networking = {
     hostName = "hlp";
     networkmanager = {
       enable = true;
-      packages = [ pkgs.networkmanager-openvpn ];
+      plugins = [ pkgs.networkmanager-openvpn ];
     };
     #useDHCP = false;
-    firewall.enable = true;
-    #firewall.allowPing = true;
-    firewall.allowedTCPPorts = [
-    	9090
-    ];
+    firewall = {
+      enable = true;
+      allowPing = true;
+    };
   };
 
-  system.stateVersion = "22.05";
+  # Basic packages
+  environment.systemPackages = with pkgs; [
+    nixpkgs-unstable.discord
+    flake.packages.x86_64-linux.exam-monitor
+    syncthingtray
+ ];
+
+  system.stateVersion = "22.11";
 }

@@ -1,48 +1,49 @@
-{ config, lib, pkgs, stdenv, ... }:
+{ config, lib, pkgs, stdenv, triScreenSetup ? false, ... }:
 
 let
+  
   defaultPkgs = with pkgs; [
     binutils-unwrapped
     stow
   	xclip
   	feh
   	scrot
+    micro
 	rofi	
   ];
+  
+  
 in
 {
 
-  imports = [ ] ++ (import ./../../modules/hm/module-list.nix);
+  programs.home-manager.enable =  true;
+  imports = [ ] ++ (import ./../../hm/module-list.nix);
 
   # Define modules
   modules = 
   		{
-        core = {
-          communication.enable = true;
-        };
-        system = {
-          i3.enable = true;
-        };
+        system.i3.enable = triScreenSetup;
+        system.gnome-keyring.enable = true;
         dev = {
           git.github.enable = true;
           vscode.enable = true;
           profiles = {
             java.enable = true;
-            rest.enable = true;
           };
         };
+        #system.keepassxc.enable = true;
         tools = {
           firefox.enable = true;
           alacritty.default.enable = true;
-          micro.enable = true;
+          #micro.enable = true;
         };  		  
   		};
   
 
-  programs.home-manager.enable =  true;
+  
   xdg.enable = true;
 
-  xdg.configFile =  {
+  xdg.configFile =  lib.mkIf triScreenSetup {
     nvidiaSettings = {
   		source = ./../../hosts/hdesktop/files/.nvidia-settings-rc;
   		target = "./../.nvidia-settings-rc";
@@ -64,7 +65,7 @@ in
   home = {
     username      = "personal";
     homeDirectory = "/home/personal";
-    stateVersion  = "21.11";
+    stateVersion  = "22.11";
 
     packages = defaultPkgs ;
 
@@ -79,8 +80,5 @@ in
     html.enable = false;
     manpages.enable = false;
   };
-
-  # notifications about home-manager news
   news.display = "silent";
-
 }

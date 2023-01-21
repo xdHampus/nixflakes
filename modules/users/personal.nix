@@ -7,12 +7,11 @@ in {
     enable = mkEnableOption "personal";
   };
   config = mkIf cfg.enable {
-    # User accounts
     users.users.personal = {
       isNormalUser = true;
       home = "/home/personal";
       description = "Personal User";
-      extraGroups = [ "users" "audio" "mpd"  "wheel" "networkmanager" "docker" "vboxusers" ];
+      extraGroups = [ "users" "audio" "mpd"  "wheel" "networkmanager" "docker" "vboxusers" "syncthing" ];
     };
   };
 }

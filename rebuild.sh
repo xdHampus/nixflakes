@@ -1,4 +1,4 @@
-
+#!/bin/sh
 flake=""
 
 if [ -n "$1" ]; then

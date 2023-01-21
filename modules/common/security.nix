@@ -7,7 +7,11 @@ in {
     enable = mkEnableOption "security";
   };
   config = mkIf cfg.enable {
-    # Sudo
+    programs.gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
+    services.pcscd.enable = true;
     security.sudo = {
       enable = true;
       wheelNeedsPassword = true;

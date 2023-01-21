@@ -9,7 +9,7 @@ let
 in
 {
   programs.home-manager.enable = true;
-  imports = [] ++ (import ./../../modules/hm/module-list.nix);
+  imports = [] ++ (import ./../../hm/module-list.nix);
 
   modules = {
     dev.git.github.enable = true;    
@@ -25,7 +25,7 @@ in
   home = {
     username      = "servuser";
     homeDirectory = "/home/servuser";
-    stateVersion  = "21.11";
+    stateVersion  = "22.05";
 
     packages = defaultPkgs;
 

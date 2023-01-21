@@ -1,33 +1,29 @@
 { config, lib, pkgs, stdenv, ... }:
 
+
 let
   extraPkgs = with pkgs; [
-  
+    micro
   ];
 
 in
 {
   programs.home-manager.enable = true;
-  imports = [] ++ (import ./../../modules/hm/module-list.nix);
+  imports = [] ++ (import ./../../hm/module-list.nix);
 
   modules = {
-    core = {
-      communication.enable = true;
-    };
     dev = {
-      git.github.enable = true;
+      git.hgard20.enable = true;
       vscode.enable = true;
       profiles = {
         java.enable = true;
-        rest.enable = true;
-        kube.enable = true;
       };
     };
     system.keepassxc.enable = true;
     tools = {
       firefox.enable = true;
       alacritty.basic.enable = true;
-      micro.enable = true;
+      #micro.enable = true;
       zathura.enable = true;
     };
   };
@@ -38,7 +34,7 @@ in
   home = {
     username      = "work";
     homeDirectory = "/home/work";
-    stateVersion  = "22.05";
+    stateVersion  = "22.11";
 
     packages = extraPkgs ;
 

@@ -1,6 +1,6 @@
 # Main NixOS Configuration file
 
-{ config, pkgs, ... }:
+{ config, pkgs, nixpkgs-unstable, ... }:
 
 {
   imports =
@@ -8,12 +8,9 @@
       ./hardware-configuration.nix
     ] ++ (import ./../../modules/module-list.nix);
 
-  # Misc
   nixpkgs.config.allowUnfree = true;
     
-  # Modules
   modules = {
-    # Core
     common = {
       # Machine
       boot.uefi.enable = true;
@@ -36,7 +33,7 @@
     services = {
       mpd.client.enable = true;
       borgbackup.personal.main.enable = true;
-	  teamviewer.enable = true;
+	    teamviewer.enable = true;
     };
   };
     
@@ -67,15 +64,16 @@
     hostName = "hdesktop";
     networkmanager = {
       enable = true;
-      packages = [ pkgs.networkmanager-openvpn ];
+      plugins = [ pkgs.networkmanager-openvpn ];
     };
     useDHCP = false;
-    firewall.enable = true;
-    firewall.allowPing = true;
+    firewall = {
+      enable = true;
+      allowPing = true;
+    };
   };
 
-  # Multi monitor
-  # also configured per user
+  # Multi monitor, also configured per user
   # due to issues with nvidia
   services.xserver.xrandrHeads = [
      {
@@ -97,35 +95,15 @@
   # Basic packages
   environment.systemPackages = with pkgs; [
     sxhkd    
-
-    # SOCIAL
-    #discord
     weechat
-    # UTILITY
     pavucontrol
     keepassxc
-    # DEV
-    #jetbrains.idea-ultimate
     atom
-    #genymotion
-    #jetbrains.clion
-    #gcc
-    #gdb
-    #ninja
-    #cmake
 	  pgweb
     borgbackup
-    
-    #postgresql
-    #dotnet-sdk_5
-    # AUDIO
-    ncmpcpp    
-
+    ncmpcpp   
+    nixpkgs-unstable.discord
  ];
 
-
-
- 
-
-  system.stateVersion = "21.11";
+  system.stateVersion = "22.11";
 }
