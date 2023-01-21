@@ -11,7 +11,7 @@ in {
       isNormalUser = true;
       home = "/home/work";
       description = "Work User";
-      extraGroups = [ "users" "audio" "wheel" "networkmanager" "docker" "vboxusers" ];
+      extraGroups = [ "users" "audio" "wheel" "networkmanager" "docker" "vboxusers" "syncthing" ];
     };
   };
 }

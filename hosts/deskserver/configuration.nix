@@ -56,7 +56,7 @@
     hostName = "deskserver";
     networkmanager = {
       enable = true;
-      packages = [ pkgs.networkmanager-openvpn ];
+      plugins = [ pkgs.networkmanager-openvpn ];
     };
     useDHCP = false;
     firewall.enable = true;
@@ -84,5 +84,5 @@
     borgbackup  
     mpd  
  ];
-  system.stateVersion = "21.11";
+  system.stateVersion = "22.11";
 }

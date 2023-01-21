@@ -10,7 +10,6 @@ in {
     # Machine specific Xorg settings, mainly drivers
     services.xserver = {
       videoDrivers = [ "modesetting" ];
-      useGlamor = true;
     };
   };
 }

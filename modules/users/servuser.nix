@@ -7,7 +7,6 @@ in {
     enable = mkEnableOption "servuser";
   };
   config = mkIf cfg.enable {
-    # User accounts
     users.users.servuser = {
       isNormalUser = true;
       home = "/home/servuser";

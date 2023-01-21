@@ -1,0 +1,23 @@
+#find . -type f -not -path "./module-list.nix" | grep .nix
+[
+  ./dev/git/hgard20.nix
+  ./dev/git/github.nix
+  ./dev/profiles/csharp.nix
+  ./dev/profiles/latex.nix
+  ./dev/profiles/python.nix
+  ./dev/profiles/java.nix
+  ./dev/profiles/kube.nix
+  ./dev/profiles/rest.nix
+  ./dev/profiles/php.nix
+  ./dev/profiles/cpp.nix
+  ./system/gnome-keyring/default.nix
+  ./system/keepassxc/default.nix
+  ./system/i3/default.nix
+  ./tools/vscode/default.nix
+  ./tools/alacritty/basic.nix
+  ./tools/alacritty/default.nix
+  ./tools/vivaldi/default.nix
+  ./tools/firefox/default.nix
+  ./tools/micro/default.nix
+  ./tools/zathura/default.nix
+]

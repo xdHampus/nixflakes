@@ -1,117 +1,104 @@
 {
-
   description = "NixOS configuration for all machines";
-
-  # Inputs control all dependencies that will be used by the flake in the outputs
   inputs = {
-      # Core dependencies.
-      nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-      home-manager.url = "github:nix-community/home-manager";
-      # Extra
-      nixpkgs-unstable.url = "github:NixOS/nixpkgs/master";
-      #nixpkgs-dev.url = "github:xdHampus/nixpkgs/master";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    home-manager.url = "github:nix-community/home-manager";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/master";
+    #nixpkgs-dev.url = "github:xdHampus/nixpkgs/master";
   };
 
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, ... }:
+    let
 
-  outputs = inputs@{ self
-    , nixpkgs
-    , nixpkgs-unstable
-    #, nixpkgs-dev
-    , home-manager 
-  }:
+      inherit (builtins) listToAttrs attrValues attrNames readDir;
+      inherit (nixpkgs) lib;
+      inherit (lib) removeSuffix;
 
-  let
-
-    inherit (builtins) listToAttrs attrValues attrNames readDir;
-    inherit (nixpkgs) lib;
-    inherit (lib) removeSuffix;
-
-    pkgs = (import nixpkgs) {
-      system = "x86_64-linux";
-      config = {
-        allowUnfree = true;
+      pkgs = (import nixpkgs) {
+        system = "x86_64-linux";
+        config = { allowUnfree = true; };
+        overlays = attrValues self.overlays;
       };
-      overlays = attrValues self.overlays;
-    };
+      defaults = { pkgs, ... }: {
+        _module.args.nixpkgs-unstable = import inputs.nixpkgs-unstable {
+          inherit (pkgs.stdenv.targetPlatform) system;
+          config = { allowUnfree = true; };
+        };
+        _module.args.flake = self;
+      };
+       
 
-  in {
+    in {
 
-    overlays = {
-      unstable = final: prev: {
-        unstable = import inputs.nixpkgs-unstable {
-          system = final.system;
-          config = {
-            allowUnfree = true;
+      overlays = {
+        unstable = final: prev: {
+          unstable = import inputs.nixpkgs-unstable {
+            system = final.system;
+            config = { allowUnfree = true; };
+          };
+        };
+        ncmpcpp = final: prev: {
+          ncmpcpp = prev.ncmpcpp.override {
+            visualizerSupport = true;
+            taglibSupport = true;
           };
         };
       };
-      dev = final: prev: {
-        dev = import inputs.nixpkgs-dev {
-          system = final.system;
-          config = {
-            allowUnfree = true;
-          };
-        };
-      };
-      ncmpcpp = final: prev: {
-        ncmpcpp = prev.ncmpcpp.override {
-          visualizerSupport = true;
-          taglibSupport = true;          
-        };
-      };
-    };
 
-
-  nixosConfigurations.hlp = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
+      nixosConfigurations.hlp = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [ defaults
           ./hosts/hlp/configuration.nix
-          #Home manager
-          home-manager.nixosModules.home-manager ({
+          home-manager.nixosModules.home-manager
+          ({
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users = import ./nix/user-import.nix { 
-              users = [ "personal" "guest" "work" ];
-              pkgs = nixpkgs;
-	          };	          	          	          
+            home-manager.users =  import ./nix/user-import.nix {
+              users = [ "personal" "work" ]; pkgs = nixpkgs;
+            };
+            home-manager.extraSpecialArgs = { triScreenSetup = false; };
           })
-      ];
-      inherit pkgs;
-    };
+        ];
+        inherit pkgs;
+      };
 
- 	nixosConfigurations.deskserver = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-          ./hosts/deskserver/configuration.nix
-          #Home manager
-          home-manager.nixosModules.home-manager ({
+
+      nixosConfigurations.hdesktop = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [ defaults
+          ./hosts/hdesktop/configuration.nix
+          home-manager.nixosModules.home-manager
+          ({
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users = import ./nix/user-import.nix {
-              users = [ "servuser" ];
-              pkgs = nixpkgs;
+              users = [ "personal" "work" ]; pkgs = nixpkgs;
+            };
+            home-manager.extraSpecialArgs = { triScreenSetup = true; };
+          })
+        ];
+        inherit pkgs;
+      };
+
+      nixosConfigurations.deskserver = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [ defaults
+          ./hosts/deskserver/configuration.nix
+          home-manager.nixosModules.home-manager
+          ({
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users = import ./nix/user-import.nix {
+              users = [ "servuser" ]; pkgs = nixpkgs;
             };
           })
-      ];
-      inherit pkgs;
+        ];
+        inherit pkgs;
+      };
+
+      packages.x86_64-linux = {
+        exam-monitor = pkgs.callPackage ./nix/pkgs/exam-monitor.nix { };
+      };
+
     };
-
- 	nixosConfigurations.hdesktop = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-          ./hosts/hdesktop/configuration.nix
-          #Home manager
-          home-manager.nixosModules.home-manager ({
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users = import ./nix/user-import.nix {
-              users = [ "personal" "work" ];
-              pkgs = nixpkgs;
-          	};
-          })
-      ];
-      inherit pkgs;
-  };     
-
-  };
 }
