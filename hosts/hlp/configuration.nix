@@ -39,19 +39,19 @@
           enable = true;
           devices = [ 
            "moto g(30)"
-           "hdesktopw"
+           "hdesktop" "hdesktopw"
            ];
         };
         code = {
           enable = true;
           devices = [ 
-           "hdesktopw"
+           "hdesktop" "hdesktopw"
           ];
         };
         shared = {
           enable = true;
           devices = [ 
-           "hdesktopw" 
+           "hdesktop" "hdesktopw" 
           ];
         };
        };

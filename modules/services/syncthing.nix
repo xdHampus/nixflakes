@@ -8,27 +8,19 @@ in {
     code.enable = mkEnableOption "enable";
     code.devices = mkOption {
       type = with types; listOf str;
-      default = [
-        "hlp"
-        "hdesktop"
-      ];
+      default = [];
     };
+    
     shared.enable = mkEnableOption "enable";
     shared.devices = mkOption {
       type = with types; listOf str;
-      default = [
-        "hlp"
-        "hdesktop"
-      ];
+      default = [];
     };
+    
     vault.enable = mkEnableOption "enable";
     vault.devices = mkOption {
       type = with types; listOf str;
-      default = [
-        "hlp"
-        "hdesktop"
-        "moto g(30)"
-      ];
+      default = [];
     };
 
   };
@@ -42,6 +34,8 @@ in {
       group = "users";
       devices = {
         "hlp" = { id = "S4JMUKW-GUHMAKS-NEEBELD-2D7JKCS-FEGHQH6-PFGBS5R-Z3UDW5B-7EHGMAV"; };
+        "hlpw" = { id = "BMHNMGG-QAPTLVL-CZX4XDJ-HB4X6JQ-A4O44Y5-OWV5YHE-RHEUGWU-R62EDAN"; };
+        "hdesktop" = { id = "VLCZPQS-BW3U3BD-QERSSJJ-MB23JXT-BSIDVMP-CTUCS2P-KJQ73TN-FXO72AV"; };
         "hdesktopw" = { id = "GMTAH6B-AUU7OHL-QM5MRIU-ZFJWGPT-3527EI4-LXLX5LB-EKB5YI5-PZASYAN"; };
         "moto g(30)" = { id = "AJXHYZS-R7GUMX3-4NKPWE7-EGSJ7TX-BLUQPCJ-KRYA6DC-J5DLBYS-CWCZNQ6"; };
         };

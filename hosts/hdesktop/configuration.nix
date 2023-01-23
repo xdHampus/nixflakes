@@ -34,7 +34,29 @@
       mpd.client.enable = true;
 	  mpd.client.host.port = "2049";
       borgbackup.personal.main.enable = true;
-	    teamviewer.enable = true;
+	  teamviewer.enable = true;
+      syncthing = {
+        enable = true;
+        vault = {
+          enable = true;
+          devices = [ 
+           "moto g(30)"
+           "hlp" "hlpw"
+           ];
+        };
+        code = {
+          enable = true;
+          devices = [ 
+           "hlp" "hlpw"
+          ];
+        };
+        shared = {
+          enable = true;
+          devices = [ 
+           "hlp" "hlpw"
+          ];
+        };
+       };
     };
   };
     
