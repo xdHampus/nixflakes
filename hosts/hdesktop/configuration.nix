@@ -23,7 +23,7 @@
       nix.enable = true; 
       security.enable = true;
       services.enable = true;
-      sound.enable = true; 
+      #sound.enable = true; 
       packages.enable = true;
       locale.dk.enable = true;
     };
@@ -35,13 +35,27 @@
     # Misc
     services = {
       mpd.client.enable = true;
+	  mpd.client.host.port = "2049";
       borgbackup.personal.main.enable = true;
 	  teamviewer.enable = true;
     };
   };
     
 
+	# Remove sound.enable or turn it off if you had it set previously, it seems to cause conflicts with pipewire
+	sound.enable = false;
+    hardware.pulseaudio.enable = false;
+	security.rtkit.enable = true;
+	services.pipewire = {
+	  enable = true;
+	  alsa.enable = true;
+	  alsa.support32Bit = true;
+	  pulse.enable = true;
+	  #jack.enable = true;
+	};
 
+
+  programs.steam.enable = true;
   # Machine specific Xorg settings, mainly drivers
   services.xserver = {
     videoDrivers = [ 
