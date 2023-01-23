@@ -12,7 +12,7 @@ in {
     programs.alacritty = {
       enable = true;
       settings = {
-        background_opacity = 0.85;
+        window.opacity = 0.85;
         bell = {
           animation = "EaseOutExpo";
           duration = 5;
