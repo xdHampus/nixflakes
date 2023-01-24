@@ -34,7 +34,9 @@ in
         #system.keepassxc.enable = true;
         tools = {
           firefox.enable = true;
-          alacritty.default.enable = true;
+          alacritty = if triScreenSetup
+       	    then {default.enable = true;}
+       	    else {basic.enable = true;};
           #micro.enable = true;
         };  		  
   		};
