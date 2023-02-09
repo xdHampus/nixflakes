@@ -10,6 +10,18 @@ in {
     # Timezone
     time.timeZone = "Europe/Amsterdam";
 
+	#Fonts
+	fonts.fonts = with pkgs; [
+	  #noto-fonts
+	  noto-fonts-cjk
+	  #noto-fonts-emoji
+	  #liberation_ttf
+	  #fira-code
+	  #fira-code-symbols
+	  #dina-font
+	];
+	
+
     # Locales
     i18n = {
     	defaultLocale = "en_US.UTF-8";
@@ -25,7 +37,9 @@ in {
     	};
 	};
     console = {
-      font = "Lat2-Terminus16";
+      #font = "Lat2-Terminus16";
+      font = "${pkgs.terminus_font}/share/consolefonts/ter-132n.psf.gz";
+   	  packages = with pkgs; [ terminus_font ];
       keyMap = "dk";
     };
   };

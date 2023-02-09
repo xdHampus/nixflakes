@@ -30,6 +30,7 @@
       work.enable = true;
     };
     # Misc
+    virtualisation.docker.enable = true;
     services = {
       mpd.client.enable = true;
 	  mpd.client.host.port = "2049";

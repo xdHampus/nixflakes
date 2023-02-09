@@ -7,6 +7,10 @@ in {
     enable = mkEnableOption "sound";
   };
   config = mkIf cfg.enable {
+    hardware = {
+      pulseaudio.enable = true;
+      pulseaudio.package = pkgs.pulseaudioFull;
+    };
     sound = {
       enable = true;
       mediaKeys.enable = true;
