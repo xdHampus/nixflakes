@@ -23,7 +23,7 @@
       nix.enable = true; 
       security.enable = true;
       services.enable = true;
-      sound.enable = true; 
+      #sound.enable = true; 
       packages.enable = true;
       locale.dk.enable = true;
      };
@@ -84,6 +84,18 @@
       allowPing = true;
     };
   };
+
+
+	sound.enable = false;
+    hardware.pulseaudio.enable = false;
+	security.rtkit.enable = true;
+	services.pipewire = {
+	  enable = true;
+	  alsa.enable = true;
+	  alsa.support32Bit = true;
+	  pulse.enable = true;
+	  #jack.enable = true;
+	};
 
   # Basic packages
   environment.systemPackages = with pkgs; [

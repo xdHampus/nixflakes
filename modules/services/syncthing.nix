@@ -33,7 +33,7 @@ in {
       overrideFolders = true;
       group = "users";
       devices = {
-        "hlp" = { id = "S4JMUKW-GUHMAKS-NEEBELD-2D7JKCS-FEGHQH6-PFGBS5R-Z3UDW5B-7EHGMAV"; };
+        "hlp" = { id = "H6F26EV-YRBI2K4-R75PU4B-OFUL4GT-AEAB7ND-CMBFMID-TEHOAJZ-S6D2IAE"; };
         "hlpw" = { id = "BMHNMGG-QAPTLVL-CZX4XDJ-HB4X6JQ-A4O44Y5-OWV5YHE-RHEUGWU-R62EDAN"; };
         "hdesktop" = { id = "VLCZPQS-BW3U3BD-QERSSJJ-MB23JXT-BSIDVMP-CTUCS2P-KJQ73TN-FXO72AV"; };
         "hdesktopw" = { id = "GMTAH6B-AUU7OHL-QM5MRIU-ZFJWGPT-3527EI4-LXLX5LB-EKB5YI5-PZASYAN"; };
