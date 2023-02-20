@@ -1,0 +1,29 @@
+\section{Verification}
+Verification of system
+
+\subsection{Verify requirements}
+The requirements are verified in this section.
+
+\subsection{Unit-tests}
+Code listing example:
+
+\begin{lstlisting}[
+    language=Java,
+    caption={Code snippet from PlayerPluginTests.java},
+    captionpos=b,
+    label={lst:test-unit1}
+]
+
+bool isTrue = false;
+
+@BeforeEach
+void setup() {
+    isTrue = true;
+}
+
+@Test
+void setupWorks() {
+	assertTrue(isTrue);
+}
+
+\end{lstlisting}

@@ -26,7 +26,6 @@
         };
         _module.args.flake = self;
       };
-       
 
     in {
 
@@ -47,14 +46,16 @@
 
       nixosConfigurations.hlp = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = [ defaults
+        modules = [
+          defaults
           ./hosts/hlp/configuration.nix
           home-manager.nixosModules.home-manager
           ({
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users =  import ./nix/user-import.nix {
-              users = [ "personal" "work" ]; pkgs = nixpkgs;
+            home-manager.users = import ./nix/user-import.nix {
+              users = [ "personal" "work" ];
+              pkgs = nixpkgs;
             };
             home-manager.extraSpecialArgs = { triScreenSetup = false; };
           })
@@ -62,17 +63,18 @@
         inherit pkgs;
       };
 
-
       nixosConfigurations.hdesktop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = [ defaults
+        modules = [
+          defaults
           ./hosts/hdesktop/configuration.nix
           home-manager.nixosModules.home-manager
           ({
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users = import ./nix/user-import.nix {
-              users = [ "personal" "work" ]; pkgs = nixpkgs;
+              users = [ "personal" "work" ];
+              pkgs = nixpkgs;
             };
             home-manager.extraSpecialArgs = { triScreenSetup = true; };
           })
@@ -82,14 +84,16 @@
 
       nixosConfigurations.deskserver = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = [ defaults
+        modules = [
+          defaults
           ./hosts/deskserver/configuration.nix
           home-manager.nixosModules.home-manager
           ({
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users = import ./nix/user-import.nix {
-              users = [ "servuser" ]; pkgs = nixpkgs;
+              users = [ "servuser" ];
+              pkgs = nixpkgs;
             };
           })
         ];
@@ -98,6 +102,21 @@
 
       packages.x86_64-linux = {
         exam-monitor = pkgs.callPackage ./nix/pkgs/exam-monitor.nix { };
+      };
+
+      templates = rec {
+
+        default = standard;
+        standard = {
+          path = ./nix/templates/standard;
+          description = "A standard flake template";
+        };
+
+        documentation = {
+          path = ./nix/templates/documentation-latex;
+          description = "A template for writing documentation with LaTeX";
+        };
+
       };
 
     };

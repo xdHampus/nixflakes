@@ -1,0 +1,18 @@
+\section{Implementation}
+This section will document the implementation details of the application. 
+
+\subsection{Selection sort}
+Include code snippets if relevant.
+\begin{lstlisting}[language=Java]
+    for (int i = 0; i < arr.length - 1; i++) {
+        int index = i;
+        for (int j = i + 1; j < arr.length; j++) {
+            if (arr[j] < arr[index]) {
+                index = j; //searching for lowest index
+            }
+        }
+        int smallerNumber = arr[index]; 
+        arr[index] = arr[i];
+        arr[i] = smallerNumber;
+    }
+\end{lstlisting}
