@@ -31,6 +31,7 @@
     };
     # Misc
     virtualisation.docker.enable = true;
+    virtualisation.virtualbox.enable = true;
     services = {
       mpd.client.enable = true;
 	  mpd.client.host.port = "2049";
