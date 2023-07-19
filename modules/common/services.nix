@@ -9,7 +9,10 @@ in {
   config = mkIf cfg.enable {
     services = {
         #lorri.enable = true;
-        printing.enable = true;
+        printing = {
+          enable = true;
+          drivers = with pkgs; [ gutenprint canon-cups-ufr2 cups-filters ];
+        };
     };
   };
 }
