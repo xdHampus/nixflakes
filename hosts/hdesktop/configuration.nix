@@ -42,7 +42,7 @@
         vault = {
           enable = true;
           devices = [
-            "moto g(30)"
+            "moto g30"
             "hlp"
             "hlpw"
           ];

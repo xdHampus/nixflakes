@@ -25,7 +25,7 @@ in
   home = {
     username      = "servuser";
     homeDirectory = "/home/servuser";
-    stateVersion  = "22.05";
+    stateVersion  = "23.05";
 
     packages = defaultPkgs;
 

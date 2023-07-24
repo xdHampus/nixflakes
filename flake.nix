@@ -1,8 +1,8 @@
 {
   description = "NixOS configuration for all machines";
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
+    home-manager.url = "github:nix-community/home-manager/release-23.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/master";
     #nixpkgs-dev.url = "github:xdHampus/nixpkgs/master";
   };

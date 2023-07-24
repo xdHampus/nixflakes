@@ -38,7 +38,7 @@ services.hardware.bolt.enable = true;
         vault = {
           enable = true;
           devices = [ 
-           "moto g(30)"
+           "moto g30"
            "hdesktop" "hdesktopw"
            ];
         };
