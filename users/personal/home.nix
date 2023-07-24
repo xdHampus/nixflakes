@@ -37,7 +37,7 @@ in
           alacritty = if triScreenSetup
        	    then {default.enable = true;}
        	    else {basic.enable = true;};
-          #micro.enable = true;
+          micro.enable = true;
         	};  
   		};
   

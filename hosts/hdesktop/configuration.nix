@@ -9,7 +9,7 @@
     ] ++ (import ./../../modules/module-list.nix);
 
   nixpkgs.config.allowUnfree = true;
-    
+
   modules = {
     common = {
       # Machine
@@ -17,7 +17,7 @@
       hardware.enable = true;
       de.nonei3.enable = true;
       # Misc
-      nix.enable = true; 
+      nix.enable = true;
       security.enable = true;
       services.enable = true;
       #sound.enable = true; 
@@ -34,67 +34,70 @@
     virtualisation.virtualbox.enable = true;
     services = {
       mpd.client.enable = true;
-	  mpd.client.host.port = "2049";
+      mpd.client.host.port = "2049";
       borgbackup.personal.main.enable = true;
-	  teamviewer.enable = true;
+      teamviewer.enable = true;
       syncthing = {
         enable = true;
         vault = {
           enable = true;
-          devices = [ 
-           "moto g(30)"
-           "hlp" "hlpw"
-           ];
+          devices = [
+            "moto g(30)"
+            "hlp"
+            "hlpw"
+          ];
         };
         code = {
           enable = true;
-          devices = [ 
-           "hlp" "hlpw"
+          devices = [
+            "hlp"
+            "hlpw"
           ];
         };
         shared = {
           enable = true;
-          devices = [ 
-           "hlp" "hlpw"
+          devices = [
+            "hlp"
+            "hlpw"
           ];
         };
-       };
+      };
     };
   };
-    
 
-	# Remove sound.enable or turn it off if you had it set previously, it seems to cause conflicts with pipewire
-	sound.enable = false;
-    hardware.pulseaudio.enable = false;
-	security.rtkit.enable = true;
-	services.pipewire = {
-	  enable = true;
-	  alsa.enable = true;
-	  alsa.support32Bit = true;
-	  pulse.enable = true;
-	  #jack.enable = true;
-	};
+
+  # Remove sound.enable or turn it off if you had it set previously, it seems to cause conflicts with pipewire
+  sound.enable = false;
+  hardware.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    #jack.enable = true;
+  };
 
 
   programs.steam.enable = true;
   # Machine specific Xorg settings, mainly drivers
   services.xserver = {
-    videoDrivers = [ 
-    	"nvidia" 
+    videoDrivers = [
+      "nvidia"
     ];
     # Fix mouse issue
     config = ''
-        Section "InputClass"
-                Identifier     "Mouse Remap"
-                 MatchProduct   "Mad Catz Mad Catz R.A.T.TE"
-                MatchDevicePath "/dev/input/event*"
-                Option         "ButtonMapping" " 1 2 3 4 5 6 7 8 9 10 11 12 0 0 0"
-                Option        "ZAxisMapping" "4 5 6 7"
-        EndSection	    
+      Section "InputClass"
+              Identifier     "Mouse Remap"
+               MatchProduct   "Mad Catz Mad Catz R.A.T.TE"
+              MatchDevicePath "/dev/input/event*"
+              Option         "ButtonMapping" " 1 2 3 4 5 6 7 8 9 10 11 12 0 0 0"
+              Option        "ZAxisMapping" "4 5 6 7"
+      EndSection      
     '';
   };
   hardware.nvidia = {
-  	modesetting.enable = true;
+    modesetting.enable = true;
   };
 
   # Networking
@@ -114,7 +117,7 @@
   # Multi monitor, also configured per user
   # due to issues with nvidia
   services.xserver.xrandrHeads = [
-     {
+    {
       output = "DVI-D-0";
       primary = false;
       monitorConfig = "Option \"Left-off\" \"HDMI-0\"";
@@ -128,20 +131,20 @@
       output = "VGA-0";
       primary = false;
     }
- ];   
+  ];
 
   # Basic packages
   environment.systemPackages = with pkgs; [
-    sxhkd    
+    sxhkd
     weechat
     pavucontrol
     keepassxc
     atom
-	  pgweb
+    pgweb
     borgbackup
-    ncmpcpp   
+    ncmpcpp
     nixpkgs-unstable.discord
- ];
+  ];
 
   system.stateVersion = "23.05";
 }

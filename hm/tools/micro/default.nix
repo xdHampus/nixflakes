@@ -21,10 +21,10 @@ in {
     		target = "./micro/bindings.json";
     	}; 
     };
-    home.activation = {
-    	installMicroPlugins = ''
-  		  micro -plugin install filemanager
-    	'';
-    };
+    #home.activation = {
+    #	installMicroPlugins = ''
+  	#	  micro -plugin install filemanager
+    #	'';
+    #};
   };
 }

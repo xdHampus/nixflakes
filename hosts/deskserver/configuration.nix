@@ -8,7 +8,6 @@
   # Legacy boot settings
   boot.loader.grub = {
     enable = true;
-    version = 2;
     device = "/dev/sdb";
   };
   
