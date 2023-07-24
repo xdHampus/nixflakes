@@ -34,7 +34,7 @@ in
   home = {
     username      = "work";
     homeDirectory = "/home/work";
-    stateVersion  = "22.11";
+    stateVersion  = "23.05";
 
     packages = extraPkgs ;
 

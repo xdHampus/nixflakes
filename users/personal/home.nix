@@ -38,7 +38,7 @@ in
        	    then {default.enable = true;}
        	    else {basic.enable = true;};
           #micro.enable = true;
-        };  		  
+        	};  
   		};
   
 
@@ -67,7 +67,7 @@ in
   home = {
     username      = "personal";
     homeDirectory = "/home/personal";
-    stateVersion  = "22.11";
+    stateVersion  = "23.05";
 
     packages = defaultPkgs ;
 
