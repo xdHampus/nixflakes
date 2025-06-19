@@ -54,10 +54,8 @@
           ({
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users = import ./nix/user-import.nix {
-              users = [ "personal" "work" ];
-              pkgs = nixpkgs;
-            };
+            home-manager.users.personal = import ./users/personal/home.nix;
+            home-manager.users.work = import ./users/work/home.nix;
             home-manager.extraSpecialArgs = { triScreenSetup = false; };
           })
         ];
@@ -73,29 +71,9 @@
           ({
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users = import ./nix/user-import.nix {
-              users = [ "personal" "work" ];
-              pkgs = nixpkgs;
-            };
+            home-manager.users.personal = import ./users/personal/home.nix;
+            home-manager.users.work = import ./users/work/home.nix;
             home-manager.extraSpecialArgs = { triScreenSetup = true; };
-          })
-        ];
-        inherit pkgs;
-      };
-
-      nixosConfigurations.deskserver = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          defaults
-          ./hosts/deskserver/configuration.nix
-          home-manager.nixosModules.home-manager
-          ({
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users = import ./nix/user-import.nix {
-              users = [ "servuser" ];
-              pkgs = nixpkgs;
-            };
           })
         ];
         inherit pkgs;

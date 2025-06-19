@@ -23,7 +23,7 @@
       nix.enable = true; 
       security.enable = true;
       services.enable = true;
-      #sound.enable = true; 
+      #  
       packages.enable = true;
       locale.dk.enable = true;
      };
@@ -132,5 +132,5 @@
     nixpkgs-unstable.xdg-utils    
  ];
 
-  system.stateVersion = "23.11";
+  system.stateVersion = "25.05";
 }

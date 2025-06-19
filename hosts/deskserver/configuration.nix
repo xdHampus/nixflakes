@@ -26,7 +26,7 @@
       nix.enable = true; 
       security.enable = true;
       services.enable = true;
-      sound.enable = true; 
+        
       packages.enable = true;
       locale.dk.enable = true;
     };

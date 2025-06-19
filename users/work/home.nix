@@ -5,7 +5,7 @@ let
   extraPkgs = with pkgs; [
     micro
     chromium
-    jetbrains.rider
+    #jetbrains.rider
   ];
 
 in
@@ -36,7 +36,7 @@ in
   home = {
     username      = "work";
     homeDirectory = "/home/work";
-    stateVersion  = "23.05";
+    stateVersion  = "25.05";
 
     packages = extraPkgs ;
 

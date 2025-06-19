@@ -20,7 +20,7 @@
       nix.enable = true;
       security.enable = true;
       services.enable = true;
-      #sound.enable = true; 
+      #  
       packages.enable = true;
       locale.dk.enable = true;
     };
@@ -67,11 +67,11 @@
 
 
   # Remove sound.enable or turn it off if you had it set previously, it seems to cause conflicts with pipewire
-  #sound.enable = true;
+  # 
   hardware.pulseaudio.enable = false;
   #hardware.pulseaudio.support32Bit = true;
   #hardware.pulseaudio.package = nixpkgs-unstable.pulseaudioFull;  
-  sound.enable = true;
+   
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -96,12 +96,6 @@
   #};
   hardware.nvidia = {
     modesetting.enable = true;
-  };
-  programs.hyprland = {
-    # Install the packages from nixpkgs
-    enable = true;
-    enableNvidiaPatches = true;
-    xwayland.enable = true;
   };
 
   # Networking
@@ -145,7 +139,8 @@
     keepassxc
     pgweb
     borgbackup
-    ncmpcpp
+    #ncmpcpp
+    mpv
 #    neofetch
     onlyoffice-bin
     nixpkgs-unstable.zoom-us
@@ -153,5 +148,5 @@
     nixpkgs-unstable.vscode
   ];
 
-  system.stateVersion = "23.11";
+  system.stateVersion = "25.05";
 }
