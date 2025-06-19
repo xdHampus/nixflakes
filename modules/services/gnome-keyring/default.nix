@@ -7,6 +7,6 @@ in {
     enable = mkEnableOption "gnome-keyring";
   };
   config = mkIf cfg.enable {
-    services.gnome3.gnome-keyring.enable = true;
+    services.gnome.gnome-keyring.enable = true;
   };
 }

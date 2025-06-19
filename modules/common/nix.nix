@@ -21,7 +21,7 @@ in {
         dates     = "weekly";
         options   = "--delete-older-than 7d";
       };
-      package = pkgs.nixFlakes;
+      package = pkgs.nixVersions.stable;
 
       # Avoid unwanted garbage collection when using nix-direnv
       extraOptions = ''

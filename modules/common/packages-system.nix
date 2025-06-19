@@ -8,9 +8,9 @@ in {
   };
   config = mkIf cfg.enable {
       environment.systemPackages = with pkgs; [
-        (pkgs.writeScriptBin "nixFlakes" ''
+        (pkgs.writeScriptBin "nixVersions.stable" ''
           #!/usr/bin/env bash
-          exec ${pkgs.nixFlakes}/bin/nix --experimental-features "nix-command flakes" "$@"
+          exec ${pkgs.nixVersions.stable}/bin/nix --experimental-features "nix-command flakes" "$@"
         '')
 
         vim
