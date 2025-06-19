@@ -8,8 +8,8 @@
       ./hardware-configuration.nix
     ] ++ (import ./../../modules/module-list.nix);
 
-  nixpkgs.config.allowUnfree = true;
-services.hardware.bolt.enable = true;
+  #nixpkgs.config.allowUnfree = true;
+  services.hardware.bolt.enable = true;
   # Modules
   modules = {
      # Core
@@ -64,10 +64,33 @@ services.hardware.bolt.enable = true;
   services.xserver = {
     videoDrivers = [ 
     	"nvidia" 
+    	"displaylink"
+    ];
+    displayManager.session = [
+   		{ manage = "desktop";
+    	    name = "xterm";
+    	    start = ''
+    	      ${pkgs.xterm}/bin/xterm -ls &
+    	      waitPID=$!
+    	    '';
+   	  }
     ];
   };
+  services.tailscale.enable = true;
   hardware.nvidia = {
   	modesetting.enable = true;
+  };
+
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+    extraPortals = [
+     nixpkgs-unstable.xdg-desktop-portal-xapp
+     pkgs.xdg-desktop-portal-gnome
+     pkgs.xdg-desktop-portal-gtk
+     pkgs.xdg-desktop-portal
+
+    ];
   };
 
     
@@ -78,7 +101,7 @@ services.hardware.bolt.enable = true;
       enable = true;
       plugins = [ pkgs.networkmanager-openvpn ];
     };
-    #useDHCP = false;
+    #useDHCP = true;
     firewall = {
       enable = true;
       allowPing = true;
@@ -100,9 +123,14 @@ services.hardware.bolt.enable = true;
   # Basic packages
   environment.systemPackages = with pkgs; [
     nixpkgs-unstable.discord
+    nixpkgs-unstable.vscode
     flake.packages.x86_64-linux.exam-monitor
     syncthingtray
+    onlyoffice-bin
+    nixpkgs-unstable.zoom-us
+    nixpkgs-unstable.unityhub
+    nixpkgs-unstable.xdg-utils    
  ];
 
-  system.stateVersion = "23.05";
+  system.stateVersion = "23.11";
 }

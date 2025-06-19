@@ -10,7 +10,7 @@
     utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs {
-          config.allowUnfree = true;
+          #config.allowUnfree = true;
           inherit system;
         };
         tex = pkgs.texlive.combine {

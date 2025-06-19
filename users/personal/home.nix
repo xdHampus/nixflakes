@@ -22,11 +22,11 @@ in
   # Define modules
   modules = 
   		{
-        system.i3.enable = triScreenSetup;
+        #system.i3.enable = triScreenSetup;
         system.gnome-keyring.enable = true;
         dev = {
           git.github.enable = true;
-          vscode.enable = true;
+          #vscode.enable = true;
           profiles = {
             java.enable = true;
           };
@@ -43,31 +43,31 @@ in
   
 
   
-  xdg.enable = true;
+#  xdg.enable = true;
 
-  xdg.configFile =  lib.mkIf triScreenSetup {
-    nvidiaSettings = {
-  		source = ./../../hosts/hdesktop/files/.nvidia-settings-rc;
-  		target = "./../.nvidia-settings-rc";
-  	};
-  	leftWallpaper = {
-  		source = ./../../resources/images/triScreenBg/33.png;
-  		target = "./wallpapers/left.png";
-  	};
-  	centerWallpaper = {
-  		source = ./../../resources/images/triScreenBg/34.png;
-  		target = "./wallpapers/center.png";
-  	};
-  	rightWallpaper = {
-  		source = ./../../resources/images/triScreenBg/37.png;
-  		target = "./wallpapers/right.png";
-  	};
-  };
+#  xdg.configFile =  lib.mkIf triScreenSetup {
+#    nvidiaSettings = {
+ # 		source = ./../../hosts/hdesktop/files/.nvidia-settings-rc;
+ # 		target = "./../.nvidia-settings-rc";
+ # 	};
+ # 	leftWallpaper = {
+ # 		source = ./../../resources/images/triScreenBg/33.png;
+ # 		target = "./wallpapers/left.png";
+ # 	};
+ # 	centerWallpaper = {
+ # 		source = ./../../resources/images/triScreenBg/34.png;
+ # 		target = "./wallpapers/center.png";
+ # 	};
+ # 	rightWallpaper = {
+ # 		source = ./../../resources/images/triScreenBg/37.png;
+ # 		target = "./wallpapers/right.png";
+ # 	};
+ # };
 
   home = {
     username      = "personal";
     homeDirectory = "/home/personal";
-    stateVersion  = "23.05";
+    stateVersion  = "23.11";
 
     packages = defaultPkgs ;
 

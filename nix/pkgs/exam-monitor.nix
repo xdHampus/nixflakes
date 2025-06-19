@@ -1,17 +1,15 @@
 { lib, stdenv, fetchurl, makeWrapper, adoptopenjdk-icedtea-web }:
 
 stdenv.mkDerivation rec {
-  pname = "exam-monitor";
+  pname = "sdu-exam-monitor";
   version = "1.0";
 
   src = fetchurl {
-      url = "https://login.exammonitor.dk/exam.jnlp";
-      sha256 = "07g2hl42apsyxk1w4psk19dawhkgh8dlp0yr9ap792a9zfqqhmfk";
+    url = "https://login.exammonitor.dk/exam.jnlp";
+    sha256 = "07g2hl42apsyxk1w4psk19dawhkgh8dlp0yr9ap792a9zfqqhmfk";
   };
   nativeBuildInputs = [ makeWrapper ];
   buildInputs = [ adoptopenjdk-icedtea-web ];
-
-  
 
   dontUnpack = true;
   installPhase = ''
@@ -23,7 +21,8 @@ stdenv.mkDerivation rec {
 
   meta = with lib; {
     homepage = "https://sdu.exammonitor.dk/";
-    description = "Digital Exam Monitor for SDU, the University of Southern Denmark";
+    description =
+      "Digital Exam Monitor for the University of Southern Denmark (SDU)";
     platforms = platforms.unix;
     license = licenses.unfree;
     maintainers = with maintainers; [ xdHampus ];

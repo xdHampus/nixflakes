@@ -4,6 +4,8 @@
 let
   extraPkgs = with pkgs; [
     micro
+    chromium
+    jetbrains.rider
   ];
 
 in
@@ -14,7 +16,7 @@ in
   modules = {
     dev = {
       git.hgard20.enable = true;
-      vscode.enable = true;
+      #vscode.enable = true;
       profiles = {
         java.enable = true;
       };

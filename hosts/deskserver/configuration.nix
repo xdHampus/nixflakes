@@ -12,7 +12,7 @@
   };
   
   # Misc
-  nixpkgs.config.allowUnfree = true;
+  #nixpkgs.config.allowUnfree = true;
   
   # Modules
   modules = {
