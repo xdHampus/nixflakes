@@ -63,7 +63,7 @@ in {
             in lib.mkOptionDefault {
               "${modifier}+Return" = "exec alacritty";
               "--release ${modifier}+Shift+s" =
-                "exec scrot -fs '/storage/Pictures/Screenshots/%Y-%m-%d_$wx$h_scrot.png'";
+                "exec scrot -fs  /sync/pictures/Screenshots/%Y-%m-%d_$wx$h_scrot.png'";
             };
           menu = "rofi -show drun";
           modifier = "Mod1";
@@ -71,7 +71,7 @@ in {
           startup = [
             {
               command =
-                "xrandr --output DVI-D-0 --auto --left-of HDMI-0 --output HDMI-0 --auto --primary --left-of VGA-0 --output VGA-0 --auto";
+                "xrandr --output DVI-D-1 --auto --left-of HDMI-1 --output HDMI-1 --auto --primary --left-of VGA-1 --output VGA-1 --auto";
               notification = false;
             }
             {
@@ -81,7 +81,7 @@ in {
             }
             {
               command =
-                "feh --bg-fill ~/.config/wallpapers/center.png --bg-fill ~/.config/wallpapers/right.png --bg-fill ~/.config/wallpapers/left.png";
+                "feh --bg-fill ~/.config/wallpapers/left.png --bg-fill ~/.config/wallpapers/center.png --bg-fill ~/.config/wallpapers/right.png";
               always = true;
               notification = false;
             }

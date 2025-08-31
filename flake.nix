@@ -71,8 +71,14 @@
           ({
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.personal = import ./users/personal/home.nix;
-            home-manager.users.work = import ./users/work/home.nix;
+            home-manager.backupFileExtension = "hmbkp";
+
+			home-manager.users = import ./nix/user-import.nix {
+				users = [ "personal" "work" ];
+				pkgs = nixpkgs;
+			};
+            #home-manager.users.personal = import ./users/personal/home.nix;
+            #home-manager.users.work = import ./users/work/home.nix;
             home-manager.extraSpecialArgs = { triScreenSetup = true; };
           })
         ];

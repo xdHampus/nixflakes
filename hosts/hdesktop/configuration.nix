@@ -15,7 +15,7 @@
       # Machine
       boot.uefi.enable = true;
       hardware.enable = true;
-      #de.nonei3.enable = true;
+      de.nonei3.enable = true;
       # Misc
       nix.enable = true;
       security.enable = true;
@@ -66,6 +66,9 @@
   };
 
 
+  boot.plymouth.enable = true;
+
+
   # Remove sound.enable or turn it off if you had it set previously, it seems to cause conflicts with pipewire
   # 
   hardware.pulseaudio.enable = false;
@@ -89,13 +92,15 @@
 
   
   # Machine specific Xorg settings, mainly drivers
-  #services.xserver = {
-  #  videoDrivers = [
-  #    "nvidia"
-  #  ];
-  #};
+  services.xserver = {
+    videoDrivers = [
+      #"nvidia"
+      "nvidiaLegacy470"
+    ];
+  };
   hardware.nvidia = {
     modesetting.enable = true;
+	open = true;
   };
 
   # Networking

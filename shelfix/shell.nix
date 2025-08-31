@@ -3,5 +3,7 @@
 pkgs.mkShell {
 	packages = with pkgs; [
 		nixVersions.latest
+		micro
+		git
 	];
 }

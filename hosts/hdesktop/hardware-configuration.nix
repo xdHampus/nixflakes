@@ -5,38 +5,47 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [ (modulesPath + "/profiles/qemu-guest.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "ehci_pci" "ata_piix" "xhci_pci" "pata_via" "usbhid" "usb_storage" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "uhci_hcd" "ahci" "virtio_pci" "virtio_scsi" "ehci_pci" "ata_piix" "xhci_pci" "pata_via" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
   boot.supportedFilesystems = [ "ntfs" ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/176ab8da-c855-4725-994e-ea8961c205e4";
+    { 
+      device = "/dev/disk/by-uuid/2b9c129e-c400-42d5-9529-cd074322ec0b";
+
+      #device = "/dev/disk/by-uuid/176ab8da-c855-4725-994e-ea8961c205e4";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/55FD-2A47";
+    { 
+    device = "/dev/disk/by-uuid/6971-E240";
+      #device = "/dev/disk/by-uuid/55FD-2A47";
       fsType = "vfat";
     };
 
-  fileSystems."/storage" =
-    { device = "/dev/disk/by-uuid/39ADCC581A16E139";
-      fsType = "ntfs"; 
-      options = [
-	 "rw"
-	# "uid=theUidOfYourUser"
-      ];    
-    };
+#  fileSystems."/storage" =
+#    { device = "/dev/disk/by-uuid/39ADCC581A16E139";
+#      fsType = "ntfs"; 
+#      options = [
+#	 "rw"
+#	# "uid=theUidOfYourUser"
+#      ];    
+#    };
 
 
-  swapDevices =
-    [ { device = "/dev/disk/by-uuid/b2e25b43-e935-4e9c-9ae0-0e7a81e2a9db"; }
-    ];
+#  swapDevices =
+#    [ { device = "/dev/disk/by-uuid/b2e25b43-e935-4e9c-9ae0-0e7a81e2a9db"; }
+#    ];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+
 }
+
+

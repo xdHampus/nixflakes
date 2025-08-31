@@ -10,6 +10,7 @@ let
   	scrot
     micro
 	rofi	
+	mpv
   ];
   
   
@@ -22,7 +23,7 @@ in
   # Define modules
   modules = 
   		{
-        #system.i3.enable = triScreenSetup;
+        system.i3.enable = triScreenSetup;
         system.gnome-keyring.enable = true;
         dev = {
           git.github.enable = true;

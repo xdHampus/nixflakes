@@ -14,10 +14,13 @@ in {
       #pulseaudio.enable = true;
       #pulseaudio.package = pkgs.pulseaudioFull;
       bluetooth.enable = true;
-      nvidia.open = true;
+      #nvidia.open = true;
       #nvidia.package = pkgs.linuxPackages.nvidiaPackages.latest;
       graphics.enable = true;
   };
-  services.xserver.videoDrivers = [ "intel" "nvidia" ];    
+ # services.xserver.videoDrivers = [ 
+ # 	"intel" 
+ # 	#"nvidia" 
+  #];    
   };
 }
