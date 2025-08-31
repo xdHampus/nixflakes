@@ -9,7 +9,6 @@ in {
   config = mkIf cfg.enable {
     home.packages =  with pkgs; [
       # Tools
-    	jetbrains.idea-ultimate
       maven
     ];
     programs.java = with pkgs; {

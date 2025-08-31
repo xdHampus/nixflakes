@@ -2,13 +2,13 @@
   description = "NixOS configuration for all machines";
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-    #nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/release-25.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/master";
     #nixpkgs-dev.url = "github:xdHampus/nixpkgs/master";
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, ... }:
+  outputs = inputs@{ self, nixpkgs, nixos-unstable, nixpkgs-unstable, home-manager, ... }:
     let
 
       inherit (builtins) listToAttrs attrValues attrNames readDir;
@@ -26,6 +26,11 @@
           config = { allowUnfree = true; };
         };
         _module.args.flake = self;
+        _module.args.nixos-unstable = import inputs.nixos-unstable {
+          inherit (pkgs.stdenv.targetPlatform) system;
+          config = { allowUnfree = true; };
+        };
+        
       };
 
     in {
@@ -33,6 +38,12 @@
       overlays = {
         unstable = final: prev: {
           unstable = import inputs.nixpkgs-unstable {
+            system = final.system;
+            config = { allowUnfree = true; };
+          };
+        };
+        nixos-unstable = final: prev: {
+          nixos-unstable = import inputs.nixos-unstable {
             system = final.system;
             config = { allowUnfree = true; };
           };

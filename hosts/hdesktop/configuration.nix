@@ -1,6 +1,6 @@
 # Main NixOS Configuration file
 
-{ config, pkgs, nixpkgs-unstable, ... }:
+{ config, pkgs, nixpkgs-unstable, nixos-unstable, ... }:
 
 {
   imports =
@@ -151,6 +151,8 @@
     nixpkgs-unstable.zoom-us
     nixpkgs-unstable.discord
     nixpkgs-unstable.vscode
+    nixos-unstable.firefox
+    nixos-unstable.jetbrains.idea-ultimate
   ];
 
   system.stateVersion = "25.05";
