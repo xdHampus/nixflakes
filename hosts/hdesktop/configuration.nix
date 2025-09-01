@@ -149,7 +149,7 @@
 #    neofetch
     onlyoffice-bin
     nixpkgs-unstable.zoom-us
-    nixpkgs-unstable.discord
+    nixos-unstable.discord
     nixpkgs-unstable.vscode
     nixos-unstable.firefox
     nixos-unstable.jetbrains.idea-ultimate
