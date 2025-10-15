@@ -29,6 +29,13 @@
       fsType = "vfat";
     };
 
+    fileSystems."/mnt/shared" = {
+      device = "192.168.1.147:/zfs-shareo/shared";
+      fsType = "nfs";
+      options = [ "rw" "proto=tcp" "vers=4" ];
+    };
+    
+
 #  fileSystems."/storage" =
 #    { device = "/dev/disk/by-uuid/39ADCC581A16E139";
 #      fsType = "ntfs"; 

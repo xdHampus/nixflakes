@@ -17,18 +17,21 @@
 
       pkgs = (import nixpkgs) {
         system = "x86_64-linux";
-        config = { allowUnfree = true; };
+        config = { 
+          allowUnfree = true; 
+          nvidia.acceptLicense = true;
+          };
         overlays = attrValues self.overlays;
       };
       defaults = { pkgs, ... }: {
         _module.args.nixpkgs-unstable = import inputs.nixpkgs-unstable {
           inherit (pkgs.stdenv.targetPlatform) system;
-          config = { allowUnfree = true; };
+          config = { allowUnfree = true; nvidia.acceptLicense = true; };
         };
         _module.args.flake = self;
         _module.args.nixos-unstable = import inputs.nixos-unstable {
           inherit (pkgs.stdenv.targetPlatform) system;
-          config = { allowUnfree = true; };
+          config = { allowUnfree = true; nvidia.acceptLicense = true; };
         };
         
       };
@@ -39,13 +42,13 @@
         unstable = final: prev: {
           unstable = import inputs.nixpkgs-unstable {
             system = final.system;
-            config = { allowUnfree = true; };
+            config = { allowUnfree = true; nvidia.acceptLicense = true; };
           };
         };
         nixos-unstable = final: prev: {
           nixos-unstable = import inputs.nixos-unstable {
             system = final.system;
-            config = { allowUnfree = true; };
+            config = { allowUnfree = true; nvidia.acceptLicense = true; };
           };
         };
         ncmpcpp = final: prev: {

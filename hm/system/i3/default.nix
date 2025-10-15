@@ -71,7 +71,7 @@ in {
           startup = [
             {
               command =
-                "xrandr --output DVI-D-1 --auto --left-of HDMI-1 --output HDMI-1 --auto --primary --left-of VGA-1 --output VGA-1 --auto";
+                "xrandr --output DVI-D-0 --auto --left-of HDMI-0 --output HDMI-0 --auto --primary --left-of VGA-0 --output VGA-0 --auto";
               notification = false;
             }
             {
@@ -81,7 +81,7 @@ in {
             }
             {
               command =
-                "feh --bg-fill ~/.config/wallpapers/left.png --bg-fill ~/.config/wallpapers/center.png --bg-fill ~/.config/wallpapers/right.png";
+                " feh --bg-fill ~/.config/wallpapers/left.png --bg-fill ~/.config/wallpapers/right.png --bg-fill ~/.config/wallpapers/center.png";
               always = true;
               notification = false;
             }

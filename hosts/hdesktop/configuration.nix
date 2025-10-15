@@ -94,13 +94,15 @@
   # Machine specific Xorg settings, mainly drivers
   services.xserver = {
     videoDrivers = [
-      #"nvidia"
-      "nvidiaLegacy470"
+      "nvidia"
+      #"nvidiaLegacy470"
     ];
   };
   hardware.nvidia = {
     modesetting.enable = true;
-	open = true;
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
+	  #open = true;
   };
 
   # Networking
@@ -116,25 +118,6 @@
       allowPing = true;
     };
   };
-
-  # Multi monitor, also configured per user
-  # due to issues with nvidia
-  #services.xserver.xrandrHeads = [
-  #  {
-  #    output = "DVI-D-0";
-  #    primary = false;
-  #    monitorConfig = "Option \"Left-off\" \"HDMI-0\"";
-  #  }
-  #  {
-  #    output = "HDMI-0";
-  #    primary = true;
-  #    monitorConfig = "Option \"Left-off\" \"VGA-0\"";
-  #  }
-  #  {
-  #    output = "VGA-0";
-  #    primary = false;
-  #  }
-  #];
 
   # Basic packages
   environment.systemPackages = with pkgs; [
