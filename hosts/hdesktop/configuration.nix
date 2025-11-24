@@ -136,6 +136,8 @@
     nixpkgs-unstable.vscode
     nixos-unstable.firefox
     nixos-unstable.jetbrains.idea-ultimate
+    nixos-unstable.android-studio-full
+    nixos-unstable.android-studio-tools
   ];
 
   system.stateVersion = "25.05";
